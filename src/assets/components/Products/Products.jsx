@@ -2,25 +2,63 @@ import React, { useContext, useState } from 'react';
 import { DataContext } from '../Context/DataContext';
 import { Dialog, DialogBackdrop, DialogPanel, Radio, RadioGroup } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import { StarIcon } from '@heroicons/react/20/solid';
-import "./cart.css"
+import "./cart.css";
+import classNames from 'classnames';
+
 const Products = () => {
   const { data, cart, setCart } = useContext(DataContext);
   const [open, setOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(null); 
+  const [selectedSize, setSelectedSize] = useState(null); 
+  const [showAlert, setShowAlert] = useState(false); // Estado para la alerta
 
+  // Función para añadir productos al carrito
   const addProduct = (product) => {
-    setCart([...cart, product]);
+    const existingProduct = cart.find(item => item.id === product.id);
+
+    if (existingProduct) {
+      // Si el producto ya existe, aumenta la cantidad
+      const updatedCart = cart.map(item =>
+        item.id === product.id
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+      setCart(updatedCart);
+    } else {
+        const cartItem = {
+        id: product.id,
+        brand: product.brand,
+        model: product.model,
+        price: product.price,
+        color: selectedColor,
+        size: selectedSize,
+        image: product.image,
+        quantity: 1,
+     };
+      // Si el producto no existe, añádelo con cantidad 1
+      setCart([...cart, { ...product, quantity: 1 }]);
+    }
+
+    // Mostrar la alerta y luego ocultarla después de 3 segundos
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 3000); // La alerta se ocultará después de 3 segundos
   };
 
   const openDialog = (product) => {
     setSelectedProduct(product);
+    setSelectedColor(product.colors[0]); 
+    setSelectedSize(product.sizes.find(size => size.inStock) || null); 
     setOpen(true);
   };
 
   const closeDialog = () => {
     setOpen(false);
     setSelectedProduct(null);
+    setSelectedColor(null); 
+    setSelectedSize(null); 
   };
 
   return (
@@ -31,6 +69,7 @@ const Products = () => {
           <h1 className="text-xl font-bold">{product.brand}</h1>
           <p className="text-gray-700">{product.model}</p>
           <h3 className="text-lg font-semibold">${product.price}</h3>
+
           <button onClick={() => openDialog(product)} className="mt-2 p-2 bg-green-500 text-white rounded hover:bg-green-600">
             Ver detalles
           </button>
@@ -41,21 +80,20 @@ const Products = () => {
         <Dialog open={open} onClose={closeDialog} className="relative z-10">
           <DialogBackdrop
             transition
-            className="fixed inset-0 hidden bg-gray-500 bg-opacity-75 transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in md:block"
+            className="fixed inset-0 hidden bg-gray-500 bg-opacity-75 transition-opacity"
           />
           <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div className="flex min-h-full items-stretch justify-center text-center md:items-center md:px-2 lg:px-4">
+            <div className="flex min-h-full items-stretch justify-center text-center">
               <DialogPanel
                 transition
-                className="flex w-full transform text-left text-base transition data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in md:my-8 md:max-w-2xl md:px-4 data-[closed]:md:translate-y-0 data-[closed]:md:scale-95 lg:max-w-4xl"
+                className="flex w-full transform text-left text-base transition"
               >
                 <div className="relative flex w-full items-center overflow-hidden bg-white px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
                   <button
                     type="button"
                     onClick={closeDialog}
-                    className="absolute right-4 top-4 text-gray-400 hover:text-gray-500 sm:right-6 sm:top-8 md:right-6 md:top-6 lg:right-8 lg:top-8"
+                    className="absolute right-4 top-4 text-gray-400 hover:text-gray-500"
                   >
-                    <span className="sr-only">Close</span>
                     <XMarkIcon aria-hidden="true" className="h-6 w-6" />
                   </button>
 
@@ -66,16 +104,83 @@ const Products = () => {
                     <div className="sm:col-span-8 lg:col-span-7">
                       <h2 className="text-2xl font-bold text-gray-900 sm:pr-12">{selectedProduct.brand} - {selectedProduct.model}</h2>
                       <p className="text-2xl text-gray-900">${selectedProduct.price}</p>
+                      <form>
+                        {/* Colors */}
+                        <fieldset aria-label="Choose a color">
+                          <legend className="text-sm font-medium text-gray-900">Color</legend>
+                          <RadioGroup
+                            value={selectedColor}
+                            onChange={setSelectedColor}
+                            className="mt-4 flex items-center space-x-3"
+                          >
+                            {selectedProduct.colors.length > 0 ? (
+                              selectedProduct.colors.map((color) => (
+                                <Radio
+                                  key={color.name}
+                                  value={color}
+                                  className={classNames(
+                                    color.selectedClass,
+                                    'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5'
+                                  )}
+                                >
+                                  <span
+                                    aria-hidden="true"
+                                    className={classNames(
+                                      color.class,
+                                      'h-8 w-8 rounded-full border border-black border-opacity-10'
+                                    )}
+                                  />
+                                </Radio>
+                              ))
+                            ) : (
+                              <p>No hay colores disponibles</p>
+                            )}
+                          </RadioGroup>
+                        </fieldset>
 
-                      {/* Agrega aquí más detalles del producto si es necesario */}
+                        {/* Sizes */}
+                        <fieldset aria-label="Choose a size" className="mt-10">
+                          <div className="flex items-center justify-between">
+                            <div className="text-sm font-medium text-gray-900">Talla</div>
+                          </div>
+
+                          <RadioGroup
+                            value={selectedSize}
+                            onChange={setSelectedSize}
+                            className="mt-4 grid grid-cols-4 gap-4"
+                          >
+                            {selectedProduct.sizes.length > 0 ? (
+                              selectedProduct.sizes.map((size) => (
+                                <Radio
+                                  key={size.name}
+                                  value={size}
+                                  disabled={!size.inStock}
+                                  className={classNames(
+                                    size.inStock
+                                      ? 'cursor-pointer bg-white text-gray-900 shadow-sm'
+                                      : 'cursor-not-allowed bg-gray-50 text-gray-200',
+                                    'group relative flex items-center justify-center rounded-md border px-4 py-3 text-sm font-medium'
+                                  )}
+                                >
+                                  <span>{size.name}</span>
+                                </Radio>
+                              ))
+                            ) : (
+                              <p>No hay tallas disponibles</p>
+                            )}
+                          </RadioGroup>
+                        </fieldset>
+                      </form>
+
                       <button
-                        onClick={() => addProduct(selectedProduct)}
-                        className="mt-6 flex w-full items-center justify-center rounded-md border border-transparent CartBtn px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        onClick={() => {
+                          addProduct(selectedProduct);
+                          closeDialog();
+                        }}
+                        disabled={!selectedSize}
+                        className="mt-6 w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 disabled:opacity-50"
                       >
-                        <span class="IconContainer"> 
-    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg>
-  </span>
-  <p class="text">Add to Cart</p> 
+                        Añadir al carrito
                       </button>
                     </div>
                   </div>
@@ -84,6 +189,14 @@ const Products = () => {
             </div>
           </div>
         </Dialog>
+      )}
+
+      {/* Alerta animada */}
+      {showAlert && (
+         <div className="fixed bottom-4 right-4 p-4 bg-green-500 text-white rounded-lg shadow-lg transition transform animate-slide-in">
+         ¡Tu producto se agregó al carrito!
+       </div>
+        
       )}
     </div>
   );

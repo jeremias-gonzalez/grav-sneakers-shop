@@ -7,6 +7,7 @@ export const DataContext = createContext();
 const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [cart,setCart] = useState([])
+ 
   useEffect(() => {
     // Cargar los datos desde el archivo JSON
     axios("data.json").then((res) => setData(res.data));
