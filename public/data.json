@@ -1,0 +1,43 @@
+[
+    {
+      "id": 1,
+      "brand": "Nike",
+      "model": "Air Max 270",
+      "color": "Black/White",
+      "size": 42,
+      "price": 150,
+      "in_stock": true,
+      "image": "https://static.nike.com/a/images/t_default/e0fb6865-40f1-4610-bb5e-76540224e72c/NIKE+DOWNSHIFTER+13.png"
+    },
+    {
+      "id": 2,
+      "brand": "Nike",
+      "model": "Air Force 1 '07",
+      "color": "White",
+      "size": 44,
+      "price": 120,
+      "in_stock": true,
+      "image": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/388d1fa1-5921-4181-9bf2-f37defd99521/NIKE+FREE+RN+FK+NEXT+NATURE.png"
+    },
+    {
+      "id": 3,
+      "brand": "Nike",
+      "model": "Blazer Mid '77",
+      "color": "Sail/Black",
+      "size": 41,
+      "price": 110,
+      "in_stock": false,
+      "image": "https://static.nike.com/a/images/t_default/373719cc-a34f-46fd-99b9-cf4d73458f6a/NIKE+FREE+RN+FK+NEXT+NATURE.png"
+    },
+    {
+      "id": 4,
+      "brand": "Nike",
+      "model": "React Infinity Run Flyknit 3",
+      "color": "White/Black",
+      "size": 43,
+      "price": 160,
+      "in_stock": true,
+      "image": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/04af6d78-2200-43f8-ba98-07127d500872/NIKE+V2K+RUN.png"
+    }
+  ]
+  
