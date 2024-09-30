@@ -30,7 +30,7 @@ import {
   TabPanels,
 } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import Carrito from '../carrito/Carrito'
+import Cart from '../Cart/Cart'
 import Logo from '../Logo/Logo'
 const navigation = {
   categories: [
@@ -312,7 +312,7 @@ export default function Navbar() {
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <Carrito/>
+                  <Cart/>
                 </div>
               </div>
             </div>

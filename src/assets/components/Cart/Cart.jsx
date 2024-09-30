@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { DataContext } from '../Context/DataContext';
 import CartContent from '../CartContent/CartContent'; // Asegúrate de tener tu componente de CartContent importado
 
-const Carrito = () => {
+const Cart = () => {
   const { cart } = useContext(DataContext);
   const [active, setActive] = useState(false);
   const [totalItems, setTotalItems] = useState(0);
@@ -91,7 +91,7 @@ const Carrito = () => {
   );
 };
 
-export default Carrito;
+export default Cart;
 
 
    {/* {Array.isArray(allProducts) && allProducts.length ? ( // Verifica si es un array y tiene elementos
