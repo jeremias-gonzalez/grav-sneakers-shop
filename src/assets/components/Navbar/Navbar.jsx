@@ -32,23 +32,24 @@ import {
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Cart from '../Cart/Cart'
 import Logo from '../Logo/Logo'
+import instagram from '../../../imgs/instagram.png'
 const navigation = {
   categories: [
     
     {
       id: 'men',
-      name: 'Productos',
+      name: 'PRODUCTOS',
       featured: [
         {
-          name: 'New Arrivals',
+          name: 'Orfertas en Knu Skool',
           href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
+          imageSrc: 'https://dcdn.mitiendanube.com/stores/222/311/products/whatsapp-image-2024-06-15-at-18-43-34-1-2df21c6bce39106ca717184895179966-1024-1024.jpeg',
           imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
         },
         {
-          name: 'Artwork Tees',
+          name: 'Conocé las nuevas low travis',
           href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg',
+          imageSrc: 'https://acdn.mitiendanube.com/stores/002/801/569/products/diseno-sin-titulo-1-f60afb3361ebaed09c17023587555972-640-0.png',
           imageAlt:
             'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
         },
@@ -71,8 +72,8 @@ const navigation = {
     },
   ],
   pages: [
-    { name: 'Inicio', href: '#' },
-    { name: 'Contactate con Nosotros', href: '#' },
+    { name: 'INICIO', href: '#' },
+    { name: 'CONTACTATE CON NOSOTROS', href: '#' },
   ],
 }
 
@@ -175,14 +176,14 @@ export default function Navbar() {
 
           
             <div className="border-t border-gray-200 px-4 py-6">
-              <a href="#" className="-m-2 flex items-center p-2">
+              <p className='climate-crisis uppercase text-xs mb-4'> Seguinos!</p>
+              <a href="https://www.instagram.com/grav.sneakers/" target='_blank' className="-m-2 flex items-center p-2">
                 <img
                   alt=""
-                  src="https://tailwindui.com/img/flags/flag-canada.svg"
-                  className="block h-auto w-5 flex-shrink-0"
+                  src={instagram}
+                  className="block h-auto w-7 flex-shrink-0"
                 />
-                <span className="ml-3 block text-base font-medium text-gray-900">CAD</span>
-                <span className="sr-only">, change currency</span>
+                
               </a>
             </div>
           </DialogPanel>
@@ -190,7 +191,7 @@ export default function Navbar() {
       </Dialog>
 
       <header className="relative bg-white">
-        <p className="flex h-10 items-center justify-center bg-custom-blue   px-4 text-sm font-bold text-white sm:px-6 lg:px-8">
+        <p className="flex h-10 items-center justify-center bg-custom-blue   px-4 text-sm montserrat text-white sm:px-6 lg:px-8">
           Superando la compra de dos productos en el carrito tenes un -20%!
         </p>
 
@@ -210,7 +211,7 @@ export default function Navbar() {
               {/* Logo */}
               <div className="ml-24 flex lg:ml-0">
                 <a href="#">
-                  <span className="sr-only">Your Company</span>
+                 
                  <Logo/>
                 </a>
               </div>
@@ -221,7 +222,7 @@ export default function Navbar() {
                   {navigation.categories.map((category) => (
                     <Popover key={category.name} className="flex">
                       <div className="relative flex">
-                        <PopoverButton className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 data-[open]:border-indigo-600 data-[open]:text-indigo-600">
+                        <PopoverButton className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-xs climate-crisis text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 data-[open]:border-indigo-600 data-[open]:text-indigo-600">
                           {category.name}
                         </PopoverButton>
                       </div>
@@ -246,11 +247,11 @@ export default function Navbar() {
                                         className="object-cover object-center"
                                       />
                                     </div>
-                                    <a href={item.href} className="mt-6 block font-medium text-gray-900">
+                                    <a href={item.href} className="mt-6 block climate-crisis text-gray-900">
                                       <span aria-hidden="true" className="absolute inset-0 z-10" />
                                       {item.name}
                                     </a>
-                                    <p aria-hidden="true" className="mt-1">
+                                    <p aria-hidden="true" className="mt-1 montserrat">
                                       Shop now
                                     </p>
                                   </div>
@@ -259,7 +260,7 @@ export default function Navbar() {
                               <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
                                 {category.sections.map((section) => (
                                   <div key={section.name}>
-                                    <p id={`${section.name}-heading`} className="font-medium text-gray-900">
+                                    <p id={`${section.name}-heading`} className="climate-crisis text-gray-900">
                                       {section.name}
                                     </p>
                                     <ul
@@ -269,7 +270,7 @@ export default function Navbar() {
                                     >
                                       {section.items.map((item) => (
                                         <li key={item.name} className="flex">
-                                          <a href={item.href} className="hover:text-gray-800">
+                                          <a href={item.href} className="hover:text-gray-800 montserrat">
                                             {item.name}
                                           </a>
                                         </li>
@@ -289,7 +290,7 @@ export default function Navbar() {
                     <a
                       key={page.name}
                       href={page.href}
-                      className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                      className="flex items-center text-xs climate-crisis text-gray-700 hover:text-gray-800"
                     >
                       {page.name}
                     </a>

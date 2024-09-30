@@ -4,9 +4,9 @@
     "brand": "Nike",
     "model": "Air Max 270",
     "colors": [
-      { "name": "Blancas", "class": "bg-white", "selectedClass": "ring-gray-400" },
-      { "name": "Verdes", "class": "bg-gray-200", "selectedClass": "ring-gray-400" },
-      { "name": "Negras", "class": "bg-gray-900", "selectedClass": "ring-gray-900" }
+      { "name": "Blanco", "class": "bg-white", "selectedClass": "ring-gray-400" },
+      { "name": "Verde", "class": "bg-gray-200", "selectedClass": "ring-gray-400" },
+      { "name": "Negro", "class": "bg-gray-900", "selectedClass": "ring-gray-900" }
     ],
     "sizes": [
       { "name": "35", "inStock": true },
@@ -20,16 +20,21 @@
     ],
     "price": 150,
     "image": "https://static.nike.com/a/images/t_default/e0fb6865-40f1-4610-bb5e-76540224e72c/NIKE+DOWNSHIFTER+13.png",
-    "quantity":1
+    "images": [
+      "https://static.nike.com/a/images/t_default/e0fb6865-40f1-4610-bb5e-76540224e72c/NIKE+DOWNSHIFTER+13.png",
+      "https://static.nike.com/a/images/t_default/e0fb6865-40f1-4610-bb5e-76540224e72c/NIKE+DOWNSHIFTER+13_1.png",
+      "https://static.nike.com/a/images/t_default/e0fb6865-40f1-4610-bb5e-76540224e72c/NIKE+DOWNSHIFTER+13_2.png"
+    ],
+    "quantity": 1
   },
   {
     "id": 2,
     "brand": "Nike",
     "model": "Air Force 1 '07",
     "colors": [
-      { "name": "Blancas", "class": "bg-white", "selectedClass": "ring-gray-400" },
-      { "name": "Verdes", "class": "bg-gray-200", "selectedClass": "ring-gray-400" },
-      { "name": "Negras", "class": "bg-gray-900", "selectedClass": "ring-gray-900" }
+      { "name": "Blanco", "class": "bg-white", "selectedClass": "ring-gray-400" },
+      { "name": "Verde", "class": "bg-gray-200", "selectedClass": "ring-gray-400" },
+      { "name": "Negro", "class": "bg-gray-900", "selectedClass": "ring-gray-900" }
     ],
     "sizes": [
       { "name": "35", "inStock": true },
@@ -43,16 +48,21 @@
     ],
     "price": 120,
     "image": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/388d1fa1-5921-4181-9bf2-f37defd99521/NIKE+FREE+RN+FK+NEXT+NATURE.png",
-    "quantity":1
+    "images": [
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/388d1fa1-5921-4181-9bf2-f37defd99521/NIKE+FREE+RN+FK+NEXT+NATURE.png",
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/388d1fa1-5921-4181-9bf2-f37defd99521/NIKE+FREE+RN+FK+NEXT+NATURE_1.png",
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/388d1fa1-5921-4181-9bf2-f37defd99521/NIKE+FREE+RN+FK+NEXT+NATURE_2.png"
+    ],
+    "quantity": 1
   },
   {
     "id": 3,
     "brand": "Nike",
     "model": "Blazer Mid '77",
     "colors": [
-      { "name": "Blancas", "class": "bg-white", "selectedClass": "ring-gray-400" },
-      { "name": "Verdes", "class": "bg-gray-200", "selectedClass": "ring-gray-400" },
-      { "name": "Negras", "class": "bg-gray-900", "selectedClass": "ring-gray-900" }
+      { "name": "Blanco", "class": "bg-white", "selectedClass": "ring-gray-400" },
+      { "name": "Verde", "class": "bg-gray-200", "selectedClass": "ring-gray-400" },
+      { "name": "Negro", "class": "bg-gray-900", "selectedClass": "ring-gray-900" }
     ],
     "sizes": [
       { "name": "35", "inStock": true },
@@ -66,16 +76,21 @@
     ],
     "price": 110,
     "image": "https://static.nike.com/a/images/t_default/373719cc-a34f-46fd-99b9-cf4d73458f6a/NIKE+FREE+RN+FK+NEXT+NATURE.png",
-    "quantity":1
+    "images": [
+      "https://static.nike.com/a/images/t_default/373719cc-a34f-46fd-99b9-cf4d73458f6a/NIKE+FREE+RN+FK+NEXT+NATURE.png",
+      "https://static.nike.com/a/images/t_default/373719cc-a34f-46fd-99b9-cf4d73458f6a/NIKE+FREE+RN+FK+NEXT+NATURE_1.png",
+      "https://static.nike.com/a/images/t_default/373719cc-a34f-46fd-99b9-cf4d73458f6a/NIKE+FREE+RN+FK+NEXT+NATURE_2.png"
+    ],
+    "quantity": 1
   },
   {
     "id": 4,
     "brand": "Nike",
     "model": "V2K Run",
     "colors": [
-      { "name": "Blancas", "class": "bg-white", "selectedClass": "ring-gray-400" },
-      { "name": "Verdes", "class": "bg-gray-200", "selectedClass": "ring-gray-400" },
-      { "name": "Negras", "class": "bg-gray-900", "selectedClass": "ring-gray-900" }
+      { "name": "Blanco", "class": "bg-white", "selectedClass": "ring-gray-400" },
+      { "name": "Verde", "class": "bg-gray-200", "selectedClass": "ring-gray-400" },
+      { "name": "Negro", "class": "bg-gray-900", "selectedClass": "ring-gray-900" }
     ],
     "sizes": [
       { "name": "35", "inStock": true },
@@ -89,6 +104,11 @@
     ],
     "price": 160,
     "image": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/04af6d78-2200-43f8-ba98-07127d500872/NIKE+V2K+RUN.png",
-    "quantity":1
+    "images": [
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/04af6d78-2200-43f8-ba98-07127d500872/NIKE+V2K+RUN.png",
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/04af6d78-2200-43f8-ba98-07127d500872/NIKE+V2K+RUN_1.png",
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/04af6d78-2200-43f8-ba98-07127d500872/NIKE+V2K+RUN_2.png"
+    ],
+    "quantity": 1
   }
 ]

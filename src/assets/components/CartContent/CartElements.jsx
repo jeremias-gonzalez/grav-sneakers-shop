@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { DataContext } from '../Context/DataContext';
+import trashicon from '../../../imgs/trash-bin-icon.png';
 
 const CartElements = () => {
   const { cart, setCart } = useContext(DataContext);
   const [total, setTotal] = useState(0);
+  const [discountedTotal, setDiscountedTotal] = useState(0); // Total con descuento
   const [discountMessage, setDiscountMessage] = useState('');
   const discountThreshold = 2; // Cantidad mínima para el descuento
   const discountPercentage = 0.2; // 20% de descuento
@@ -20,9 +22,10 @@ const CartElements = () => {
       // Aplicar descuento si supera el umbral
       if (totalQuantity > discountThreshold) {
         const discountedTotal = newTotal - (newTotal * discountPercentage);
-        setTotal(discountedTotal);
+        setDiscountedTotal(discountedTotal); // Guardar el total con descuento
         setDiscountMessage(`Has superado el límite de compra minorista. Se aplica un 20% de descuento.`);
       } else {
+        setDiscountedTotal(newTotal); // Sin descuento
         setDiscountMessage('');
       }
     };
@@ -61,6 +64,28 @@ const CartElements = () => {
     setCart([]);
   };
 
+  // Función para generar el enlace de WhatsApp
+  const generateWhatsAppLink = (cart, discountedTotal) => {
+    const baseUrl = 'https://api.whatsapp.com/send?phone=543585181780';
+    let message = 'Aquí están los productos en mi carrito:\n';
+
+    // Sumar el total de los productos en el carrito
+    cart.forEach((product) => {
+      message += `- ${product.brand} ${product.model}, Precio: $${product.price}, Color: ${product.color.name}, Talle: ${product.size.name}, Cantidad: ${product.quantity}\n`;
+    });
+
+    // Agregar el total con descuento al mensaje
+    message += `\nTotal de la compra: $${discountedTotal.toFixed(2)}`;
+
+    const encodedMessage = encodeURIComponent(message);
+    return `${baseUrl}&text=${encodedMessage}`;
+  };
+
+  const handleWhatsAppShare = () => {
+    const link = generateWhatsAppLink(cart, discountedTotal); // Pasa discountedTotal
+    window.open(link, '_blank');
+  };
+
   return (
     <div>
       {cart.length === 0 ? (
@@ -71,54 +96,67 @@ const CartElements = () => {
             <div className='flex items-center justify-between mb-4' key={`${product.id}-${product.color.name}-${product.size.name}`}>
               <img className='w-16' src={product.image} alt={product.model} />
               <div className="flex flex-col">
-                <h1 className='montserrat'>{product.brand}</h1>
-                <p className='montserrat'>{product.model}</p>
-                <h3 className='montserrat'>${(product.price * product.quantity).toLocaleString()}</h3>
-                <p className='montserrat'>Color: {typeof product.color === 'object' ? product.color.name : product.color}</p>
-                <h4 className='montserrat'>Talle: {typeof product.size === 'object' ? product.size.name : product.size}</h4>
-
+                <div className='flex'>
+                  <h1 className='montserrat mx-1 text-xs'>{product.brand}</h1>
+                  <p className='montserrat text-xs'>{product.model}</p>
+                </div>
+                <div className='flex'>
+                  <p className='montserrat text-xs mx-1'>Color: {typeof product.color === 'object' ? product.color.name : product.color}</p>
+                  <h4 className='montserrat text-xs'>Talle: {typeof product.size === 'object' ? product.size.name : product.size}</h4>
+                </div>
                 {/* Botones de incrementar y decrementar */}
-                <div className="flex items-center space-x-2">
+                <div className="flex border w-20 rounded-xl items-center space-x-5">
                   <button
                     onClick={() => updateQuantity(product.id, product.color.name, product.size.name, 'decrement')}
-                    className="bg-gray-300 text-gray-800 p-2 rounded hover:bg-gray-400"
+                    className="text-gray-800 p-1 rounded hover:bg-gray-400"
                   >
                     -
                   </button>
                   <p className='montserrat'>{product.quantity}</p> {/* Mostrar la cantidad */}
                   <button
                     onClick={() => updateQuantity(product.id, product.color.name, product.size.name, 'increment')}
-                    className="bg-gray-300 text-gray-800 p-2 rounded hover:bg-gray-400"
+                    className="text-gray-800 rounded hover:bg-gray-400"
                   >
                     +
                   </button>
                 </div>
               </div>
-              <button
-                onClick={() => removeProduct(product.id, product.color.name, product.size.name)}
-                className='bg-red-500 text-white p-2 rounded'
-              >
-                Eliminar
-              </button>
+              <div>
+                <button
+                  onClick={() => removeProduct(product.id, product.color.name, product.size.name)}
+                  className='p-2 rounded'
+                >
+                  <img src={trashicon} className='w-5' alt="" />
+                </button>
+                <h3 className='montserrat text-xs'>${(product.price * product.quantity).toLocaleString()}</h3>
+              </div>
             </div>
           ))}
 
           {/* Mostrar el mensaje de descuento si corresponde */}
-          {discountMessage && <p className="text-green-600 font-semibold">{discountMessage}</p>}
+          {discountMessage && <p className="text-green-600 climate-crisis uppercase mt-20 text-xs">{discountMessage}</p>}
 
           {/* Mostrar el total del carrito */}
           <div className='mt-50 z-100'>
             <div className="border-t flex justify-between text-base font-medium text-gray-900">
-              <p>Subtotal</p>
-              <p>${total.toFixed(2)}</p> {/* Mostrar total formateado */}
+              <p className='montserrat'>Subtotal</p>
+              <p className='montserrat'>${discountedTotal.toFixed(2)}</p> {/* Mostrar total con descuento */}
             </div>
 
             {/* Botón para vaciar el carrito */}
             <button
               onClick={clearCart}
-              className='mt-4 bg-red-600 text-white p-2 rounded'
+              className='mt-4 bg-custom-blue montserrat text-white p-2 rounded'
             >
               Vaciar Carrito
+            </button>
+
+            {/* Botón para compartir en WhatsApp */}
+            <button
+              onClick={handleWhatsAppShare}
+              className='mt-4 bg-green-600 montserrat text-white p-2 rounded'
+            >
+              Enviar carrito a WhatsApp
             </button>
           </div>
         </>

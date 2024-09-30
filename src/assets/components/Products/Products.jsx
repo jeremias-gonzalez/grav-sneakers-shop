@@ -4,6 +4,8 @@ import { Dialog, DialogBackdrop, DialogPanel, Radio, RadioGroup } from '@headles
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import "./cart.css";
 import classNames from 'classnames';
+import SliderDetail from '../SliderDetail/SliderDetail';
+import check from '../../../imgs/check.png'
 
 const Products = () => {
   const { data, cart, setCart } = useContext(DataContext);
@@ -13,6 +15,7 @@ const Products = () => {
   const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
 
   const addProduct = (product) => {
     const existingProduct = cart.find(item => 
@@ -64,16 +67,16 @@ const Products = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 ">
       {data.map((product) => (
-        <div key={product.id} className="border rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <div key={product.id} className="rounded-lg w-48  overflow-hidden ">
           <img className="w-full h-48 object-cover" src={product.image} alt={product.model} />
           <div className="p-4">
-            <h1 className="text-xl font-bold">{product.brand}</h1>
-            <p className="text-gray-700">{product.model}</p>
-            <h3 className="text-lg font-semibold">${product.price}</h3>
-            <button onClick={() => openDialog(product)} className="mt-2 p-2 bg-green-500 text-white rounded hover:bg-green-600">
-              Ver detalles
+            <h1 className="text-xl montserrat">{product.brand}</h1>
+            <p className="text-gray-700 montserrat">{product.model}</p>
+            <h3 className="text-lg montserrat">${product.price}</h3>
+            <button onClick={() => openDialog(product)} className="mt-2 p-1.5 bg-custom-blue text-white climate-crisis rounded-xl text-xs hover:bg-white hover:text-custom-blue transition  hover:shadow-lg">
+             Comprar
             </button>
           </div>
         </div>
@@ -83,8 +86,8 @@ const Products = () => {
         <Dialog open={open} onClose={closeDialog} className="relative z-10">
           <DialogBackdrop className="fixed inset-0 bg-gray-500 bg-opacity-75" />
           <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div className="flex min-h-full items-stretch justify-center text-center">
-              <DialogPanel className="flex w-full transform text-left text-base transition">
+            <div className="flex  items-stretch justify-center text-center">
+              <DialogPanel className="flex w-[90vw] transform text-left text-base transition">
                 <div className="relative flex w-full items-center overflow-hidden bg-white px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
                   <button
                     type="button"
@@ -94,27 +97,26 @@ const Products = () => {
                     <XMarkIcon aria-hidden="true" className="h-6 w-6" />
                   </button>
                   <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
-                    <div className="aspect-h-3 aspect-w-2 overflow-hidden rounded-lg bg-gray-100 sm:col-span-4 lg:col-span-5">
-                      <img alt={selectedProduct.imageAlt} src={selectedProduct.image} className="object-cover object-center" />
-                    </div>
+                  {/* <SliderDetail images={selectedProduct.images} /> */}
+                  <img className='w-[100vw] h-[50vh]' src={selectedProduct.image}alt="" />
                     <div className="sm:col-span-8 lg:col-span-7">
-                      <h2 className="text-2xl font-bold text-gray-900 sm:pr-12">{selectedProduct.brand} - {selectedProduct.model}</h2>
-                      <p className="text-2xl text-gray-900">${selectedProduct.price}</p>
+                      <h2 className="text-2xl montserrat text-gray-900 sm:pr-12">{selectedProduct.brand} - {selectedProduct.model}</h2>
+                      <p className="text-2xl montserrat text-gray-900">${selectedProduct.price}</p>
 
                       <form>
-                        {/* Colors */}
-                        <fieldset aria-label="Choose a color">
-                          <legend className="text-sm font-medium text-gray-900">Color</legend>
+                                                {/* Colors */}
+                     <fieldset aria-label="Choose a color">
+                          <legend className="text-sm montserrat text-gray-900">Color</legend>
                           <RadioGroup value={selectedColor} onChange={setSelectedColor} className="mt-4 flex items-center space-x-3">
-                            {selectedProduct.colors.length > 0 ? (
+                            {selectedProduct.colors && selectedProduct.colors.length > 0 ? (
                               selectedProduct.colors.map((color) => (
                                 <Radio
                                   key={color.name}
                                   value={color}
                                   aria-label={color.name}
                                   className={classNames(
-                                    color === selectedColor ? `ring-2 ring-offset-2 ${color.selectedClass}` : '',
-                                    'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none data-[checked]:ring-2 data-[focus]:data-[checked]:ring data-[focus]:data-[checked]:ring-offset-1',
+                                    'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none',
+                                    color === selectedColor ? `ring-2 ring-offset-2 ${color.selectedClass}` : ''
                                   )}
                                 >
                                   <span
@@ -135,7 +137,7 @@ const Products = () => {
                         {/* Sizes */}
                         <fieldset aria-label="Choose a size" className="mt-10">
                           <div className="flex items-center justify-between">
-                            <div className="text-sm font-medium text-gray-900">Talla</div>
+                            <div className="text-sm montserrat text-gray-900">Talles</div>
                           </div>
 
                           <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4 grid grid-cols-4 gap-4">
@@ -149,47 +151,58 @@ const Products = () => {
                                     size.inStock
                                       ? 'cursor-pointer bg-white text-gray-900 shadow-sm'
                                       : 'cursor-not-allowed bg-gray-50 text-gray-200',
-                                    size === selectedSize ? 'ring-2 ring-offset-2 ring-green-500' : '',
+                                    size === selectedSize ? 'ring-2 ring-offset-2 ring-custom-blue' : '',
                                     'group relative flex items-center justify-center rounded-md border px-4 py-3 text-sm font-medium'
                                   )}
                                 >
-                                  <span>{size.name}</span>
+                                  <span className='montserrat'>{size.name}</span>
                                 </Radio>
                               ))
                             ) : (
-                              <p>No hay tallas disponibles</p>
+                              <p className='climate-crisis'>No hay tallas disponibles</p>
                             )}
                           </RadioGroup>
                         </fieldset>
                       </form>
 
                       {/* Cantidad */}
-                      <div className="mt-4 flex items-center">
+                      <div className="mt-4 border rounded-xl md:w-[20%] w-[30%] h-[20%] flex items-center space-x-7">
                         <button
                           onClick={() => setQuantity(prev => Math.max(prev - 1, 1))}
-                          className="bg-gray-300 text-gray-800 p-2 rounded hover:bg-gray-400"
+                          className="bg-gray-300  text-gray-800 p-1 rounded hover:bg-gray-400"
                         >
                           -
                         </button>
-                        <span className="mx-2">{quantity}</span>
+                        <span className="mx-2 montserrat">{quantity}</span>
                         <button
                           onClick={() => setQuantity(prev => prev + 1)}
-                          className="bg-gray-300 text-gray-800 p-2 rounded hover:bg-gray-400"
+                          className="bg-gray-300 text-gray-800 p-1 rounded hover:bg-gray-400"
                         >
                           +
                         </button>
                       </div>
 
-                      <button
-                        onClick={() => {
-                          addProduct(selectedProduct);
-                          closeDialog();
-                        }}
-                        disabled={!selectedColor || !selectedSize}
-                        className="mt-6 w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 disabled:opacity-50"
-                      >
-                        Añadir al carrito
-                      </button>
+                                        <button
+                    onClick={() => {
+                      if (!selectedColor || !selectedSize) {
+                        setAlertMessage('Por favor, selecciona un color y un talle antes de agregar al carrito.');
+                        setTimeout(() => setAlertMessage(''), 3000); // El mensaje se ocultará después de 3 segundos
+                      } else {
+                        addProduct(selectedProduct);
+                        closeDialog();
+                        setAlertMessage('¡Producto agregado al carrito!'); // Mensaje de éxito si se agrega correctamente
+                        setTimeout(() => setAlertMessage(''), 3000);
+                      }
+                    }}
+                    disabled={!selectedColor || !selectedSize}
+                    className="mt-6 w-30 bg-custom-blue text-white montserrat py-2 px-4 rounded-xl hover:bg-custom-color hover:text-white hover:shadow-lg"
+                  >
+                    Añadir al carrito
+                  </button>
+
+                  {alertMessage && (
+                    <div className="mt-2 text-red-500 montserrat">{alertMessage}</div>
+                  )}
                     </div>
                   </div>
                 </div>
@@ -200,8 +213,10 @@ const Products = () => {
       )}
 
       {showAlert && (
-        <div className="fixed top-2 right-[4rem] transform -translate-x-1/2 p-4 bg-green-500 text-white rounded-lg shadow-lg transition animate-slide-in">
-          ¡Tu producto se agregó al carrito!
+        <div className="fixed top-2 flex right-[4rem] transform -translate-x-1/2 p-4 bg-green-500 text-white montserrat rounded-lg shadow-lg transition animate-slide-in">
+       <svg className='mt-1 mr-1' width="5%" height="5%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <path d="M22 11.0857V12.0057C21.9988 14.1621 21.3005 16.2604 20.0093 17.9875C18.7182 19.7147 16.9033 20.9782 14.8354 21.5896C12.7674 22.201 10.5573 22.1276 8.53447 21.3803C6.51168 20.633 4.78465 19.2518 3.61096 17.4428C2.43727 15.6338 1.87979 13.4938 2.02168 11.342C2.16356 9.19029 2.99721 7.14205 4.39828 5.5028C5.79935 3.86354 7.69279 2.72111 9.79619 2.24587C11.8996 1.77063 14.1003 1.98806 16.07 2.86572M22 4L12 14.01L9 11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+ </svg>  ¡Tu producto se agregó al carrito!
         </div>
       )}
     </div>

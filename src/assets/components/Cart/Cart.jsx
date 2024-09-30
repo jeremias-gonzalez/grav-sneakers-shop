@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { DataContext } from '../Context/DataContext';
 import CartContent from '../CartContent/CartContent'; // Asegúrate de tener tu componente de CartContent importado
-
+import carticon from "../../../imgs/shopping-cart.png"
 const Cart = () => {
   const { cart } = useContext(DataContext);
   const [active, setActive] = useState(false);
@@ -24,24 +24,11 @@ const Cart = () => {
           className='container-cart-icon'
           onClick={() => setActive(!active)}
         >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            fill='none'
-            viewBox='0 0 24 24'
-            strokeWidth='1.2'
-            stroke='currentColor'
-            className='icon-cart'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              d='M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z'
-            />
-          </svg>
+        <img src={carticon} className='w-6' alt="" />
 
           {/* Número total de productos en el carrito */}
           {totalItems > 0 && (
-            <div className="absolute top-0 right-0 w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center text-xs">
+            <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-custom-blue text-white montserrat flex items-center justify-center text-xs">
               {totalItems}
             </div>
           )}
@@ -55,8 +42,8 @@ const Cart = () => {
               <div className="pointer-events-auto w-screen max-w-md">
                 <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                   <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
-                    <div className="flex items-start justify-between">
-                      <h2 className="text-lg font-medium text-gray-900 climate-crisis">Mi carrito</h2>
+                    <div className="flex items-start justify-between mb-7">
+                      <h2 className="text-lg font-medium text-gray-900 climate-crisis mx-auto ">Mi carrito</h2>
                       <div className="ml-3 flex h-7 items-center">
                         <button
                           type="button"
