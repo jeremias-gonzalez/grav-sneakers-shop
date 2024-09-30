@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Navbar } from '../Navbar/Navbar'
+import Navbar from '../Navbar/Navbar';
 import Products from '../Products/Products'
 const Home = () => {
   const  [countProducts,setCountProducts] = useState (0);

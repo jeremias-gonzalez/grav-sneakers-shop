@@ -15,42 +15,44 @@ const Products = () => {
 
   // Función para añadir productos al carrito
   const addProduct = (product) => {
-    const existingProduct = cart.find(item => item.id === product.id);
-
+    // Verifica si el producto ya existe en el carrito con el mismo color y talla
+    const existingProduct = cart.find(item => 
+      item.id === product.id && 
+      item.color.name === selectedColor.name && 
+      item.size.name === selectedSize.name
+    );
+  
     if (existingProduct) {
-      // Si el producto ya existe, aumenta la cantidad
+      // Si el producto ya existe, incrementa la cantidad
       const updatedCart = cart.map(item =>
-        item.id === product.id
+        item.id === product.id && item.color.name === selectedColor.name && item.size.name === selectedSize.name
           ? { ...item, quantity: item.quantity + 1 }
           : item
       );
       setCart(updatedCart);
     } else {
-        const cartItem = {
+      // Si no existe, agrega el producto al carrito
+      const cartItem = {
         id: product.id,
         brand: product.brand,
         model: product.model,
         price: product.price,
-        color: selectedColor,
-        size: selectedSize,
+        color: selectedColor, // Incluye el color seleccionado
+        size: selectedSize,   // Incluye la talla seleccionada
         image: product.image,
         quantity: 1,
-     };
-      // Si el producto no existe, añádelo con cantidad 1
-      setCart([...cart, { ...product, quantity: 1 }]);
+      };
+      setCart([...cart, cartItem]);
     }
-
-    // Mostrar la alerta y luego ocultarla después de 3 segundos
+  
+    // Mostrar la alerta de éxito
     setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 3000); // La alerta se ocultará después de 3 segundos
+    setTimeout(() => setShowAlert(false), 3000);
   };
-
   const openDialog = (product) => {
     setSelectedProduct(product);
-    setSelectedColor(product.colors[0]); 
-    setSelectedSize(product.sizes.find(size => size.inStock) || null); 
+    setSelectedColor(null); // No preseleccionar color
+    setSelectedSize(null);  // No preseleccionar talla
     setOpen(true);
   };
 
@@ -104,84 +106,87 @@ const Products = () => {
                     <div className="sm:col-span-8 lg:col-span-7">
                       <h2 className="text-2xl font-bold text-gray-900 sm:pr-12">{selectedProduct.brand} - {selectedProduct.model}</h2>
                       <p className="text-2xl text-gray-900">${selectedProduct.price}</p>
-                      <form>
-                        {/* Colors */}
-                        <fieldset aria-label="Choose a color">
-                          <legend className="text-sm font-medium text-gray-900">Color</legend>
-                          <RadioGroup
-                            value={selectedColor}
-                            onChange={setSelectedColor}
-                            className="mt-4 flex items-center space-x-3"
-                          >
-                            {selectedProduct.colors.length > 0 ? (
-                              selectedProduct.colors.map((color) => (
-                                <Radio
-                                  key={color.name}
-                                  value={color}
+
+                    <form>
+                      {/* Colors */}
+                      <fieldset aria-label="Choose a color">
+                        <legend className="text-sm font-medium text-gray-900">Color</legend>
+                        <RadioGroup
+                          value={selectedColor}
+                          onChange={setSelectedColor}
+                          className="mt-4 flex items-center space-x-3"
+                        >
+                          {selectedProduct.colors.length > 0 ? (
+                            selectedProduct.colors.map((color) => (
+                              <Radio
+                                key={color.name}
+                                value={color}
+                                className={classNames(
+                                  color === selectedColor ? 'ring-2 ring-offset-2 ring-green-500' : '',
+                                  '-m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5'
+                                )}
+                              >
+                                <span
+                                  aria-hidden="true"
                                   className={classNames(
-                                    color.selectedClass,
-                                    'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5'
+                                    color.class,
+                                    'h-8 w-8 rounded-full border border-black border-opacity-10'
                                   )}
-                                >
-                                  <span
-                                    aria-hidden="true"
-                                    className={classNames(
-                                      color.class,
-                                      'h-8 w-8 rounded-full border border-black border-opacity-10'
-                                    )}
-                                  />
-                                </Radio>
-                              ))
-                            ) : (
-                              <p>No hay colores disponibles</p>
-                            )}
-                          </RadioGroup>
-                        </fieldset>
+                                />
+                              </Radio>
+                            ))
+                          ) : (
+                            <p>No hay colores disponibles</p>
+                          )}
+                        </RadioGroup>
+                      </fieldset>
 
-                        {/* Sizes */}
-                        <fieldset aria-label="Choose a size" className="mt-10">
-                          <div className="flex items-center justify-between">
-                            <div className="text-sm font-medium text-gray-900">Talla</div>
-                          </div>
+                      {/* Sizes */}
+                      <fieldset aria-label="Choose a size" className="mt-10">
+                        <div className="flex items-center justify-between">
+                          <div className="text-sm font-medium text-gray-900">Talla</div>
+                        </div>
 
-                          <RadioGroup
-                            value={selectedSize}
-                            onChange={setSelectedSize}
-                            className="mt-4 grid grid-cols-4 gap-4"
-                          >
-                            {selectedProduct.sizes.length > 0 ? (
-                              selectedProduct.sizes.map((size) => (
-                                <Radio
-                                  key={size.name}
-                                  value={size}
-                                  disabled={!size.inStock}
-                                  className={classNames(
-                                    size.inStock
-                                      ? 'cursor-pointer bg-white text-gray-900 shadow-sm'
-                                      : 'cursor-not-allowed bg-gray-50 text-gray-200',
-                                    'group relative flex items-center justify-center rounded-md border px-4 py-3 text-sm font-medium'
-                                  )}
-                                >
-                                  <span>{size.name}</span>
-                                </Radio>
-                              ))
-                            ) : (
-                              <p>No hay tallas disponibles</p>
-                            )}
-                          </RadioGroup>
-                        </fieldset>
-                      </form>
+                        <RadioGroup
+                          value={selectedSize}
+                          onChange={setSelectedSize}
+                          className="mt-4 grid grid-cols-4 gap-4"
+                        >
+                          {selectedProduct.sizes.length > 0 ? (
+                            selectedProduct.sizes.map((size) => (
+                              <Radio
+                                key={size.name}
+                                value={size}
+                                disabled={!size.inStock}
+                                className={classNames(
+                                  size.inStock
+                                    ? 'cursor-pointer bg-white text-gray-900 shadow-sm'
+                                    : 'cursor-not-allowed bg-gray-50 text-gray-200',
+                                  size === selectedSize ? 'ring-2 ring-offset-2 ring-green-500' : '',
+                                  'group relative flex items-center justify-center rounded-md border px-4 py-3 text-sm font-medium'
+                                )}
+                              >
+                                <span>{size.name}</span>
+                              </Radio>
+                            ))
+                          ) : (
+                            <p>No hay tallas disponibles</p>
+                          )}
+                        </RadioGroup>
+                      </fieldset>
+                    </form>
 
-                      <button
-                        onClick={() => {
-                          addProduct(selectedProduct);
-                          closeDialog();
-                        }}
-                        disabled={!selectedSize}
-                        className="mt-6 w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 disabled:opacity-50"
-                      >
-                        Añadir al carrito
-                      </button>
+                    <button
+                      onClick={() => {
+                        addProduct(selectedProduct);
+                        closeDialog();
+                      }}
+                      disabled={!selectedColor || !selectedSize} // Desactivar si no se ha seleccionado color o talla
+                      className="mt-6 w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 disabled:opacity-50"
+                    >
+                      Añadir al carrito
+                    </button>
+
                     </div>
                   </div>
                 </div>
@@ -193,7 +198,7 @@ const Products = () => {
 
       {/* Alerta animada */}
       {showAlert && (
-         <div className="fixed bottom-4 right-4 p-4 bg-green-500 text-white rounded-lg shadow-lg transition transform animate-slide-in">
+         <div className="fixed top-2 right-[4rem] transform -translate-x-1/2 p-4 bg-green-500 text-white rounded-lg shadow-lg transition animate-slide-in">
          ¡Tu producto se agregó al carrito!
        </div>
         

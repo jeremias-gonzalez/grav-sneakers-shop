@@ -16,9 +16,29 @@ const CartElements = () => {
   }, [cart]);
 
   // Función para eliminar un producto del carrito
-  const removeProduct = (productId) => {
-    const updatedCart = cart.filter(item => item.id !== productId);
+  const removeProduct = (productId, productColor, productSize) => {
+    const updatedCart = cart.filter(
+      item => !(item.id === productId && item.color.name === productColor && item.size.name === productSize)
+    );
     setCart(updatedCart);
+  };
+
+  // Función para actualizar la cantidad de un producto
+  const updateQuantity = (productId, productColor, productSize, action) => {
+    const updatedCart = cart.map((item) => {
+      if (item.id === productId && item.color.name === productColor && item.size.name === productSize) {
+        // Aumentar o disminuir la cantidad
+        let newQuantity = item.quantity;
+        if (action === 'increment') {
+          newQuantity += 1;
+        } else if (action === 'decrement' && newQuantity > 1) {
+          newQuantity -= 1;
+        }
+        return { ...item, quantity: newQuantity };
+      }
+      return item;
+    });
+    setCart(updatedCart); // Actualizar el carrito con la nueva cantidad
   };
 
   // Función para vaciar el carrito
@@ -33,7 +53,7 @@ const CartElements = () => {
       ) : (
         <>
           {cart.map((product) => (
-            <div className='flex items-center justify-between mb-4' key={product.id}>
+            <div className='flex items-center justify-between mb-4' key={`${product.id}-${product.color.name}-${product.size.name}`}>
               <img className='w-16' src={product.image} alt={product.model} />
               <div className="flex flex-col">
                 <h1>{product.brand}</h1>
@@ -41,10 +61,26 @@ const CartElements = () => {
                 <h3>${product.price * product.quantity}</h3> {/* Precio basado en la cantidad */}
                 <p>Color: {typeof product.color === 'object' ? product.color.name : product.color}</p>
                 <h4>Talla: {typeof product.size === 'object' ? product.size.name : product.size}</h4>
-                <p>Cantidad: {product.quantity}</p> {/* Mostrar la cantidad */}
+
+                {/* Botones de incrementar y decrementar */}
+                <div className="flex items-center space-x-2">
+                  <button
+                    onClick={() => updateQuantity(product.id, product.color.name, product.size.name, 'decrement')}
+                    className="bg-gray-300 text-gray-800 p-2 rounded hover:bg-gray-400"
+                  >
+                    -
+                  </button>
+                  <p>{product.quantity}</p> {/* Mostrar la cantidad */}
+                  <button
+                    onClick={() => updateQuantity(product.id, product.color.name, product.size.name, 'increment')}
+                    className="bg-gray-300 text-gray-800 p-2 rounded hover:bg-gray-400"
+                  >
+                    +
+                  </button>
+                </div>
               </div>
               <button
-                onClick={() => removeProduct(product.id)}
+                onClick={() => removeProduct(product.id, product.color.name, product.size.name)}
                 className='bg-red-500 text-white p-2 rounded'
               >
                 Eliminar
@@ -54,17 +90,18 @@ const CartElements = () => {
 
           {/* Mostrar el total del carrito */}
           <div className='mt-50 z-100'>
-          <div className="border-t flex justify-between text-base font-medium text-gray-900">
-                                            <p>Subtotal</p>
-                                            <p>${total}</p>
-                                        </div>
-          {/* Botón para vaciar el carrito */}
-          <button
-            onClick={clearCart}
-            className='mt-4 bg-red-600 text-white p-2 rounded'
-          >
-            Vaciar Carrito
-          </button>
+            <div className="border-t flex justify-between text-base font-medium text-gray-900">
+              <p>Subtotal</p>
+              <p>${total}</p>
+            </div>
+
+            {/* Botón para vaciar el carrito */}
+            <button
+              onClick={clearCart}
+              className='mt-4 bg-red-600 text-white p-2 rounded'
+            >
+              Vaciar Carrito
+            </button>
           </div>
         </>
       )}
