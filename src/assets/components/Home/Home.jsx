@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Navbar from '../Navbar/Navbar';
+import Navbar from "../Navbar/Navbar"
 import Products from '../Products/Products'
 const Home = () => {
   const  [countProducts,setCountProducts] = useState (0);
@@ -9,13 +9,14 @@ const Home = () => {
 
   return (
     <div>
-        <Navbar
+      <Navbar/>
+        {/* <Carrito
        allProducts={allProducts}
        setAllProducts={setAllProducts}
        total={total}
        setTotal={setTotal}
        countProducts={countProducts}
-       setCountProducts={setCountProducts} />
+       setCountProducts={setCountProducts} /> */}
         <Products
         allProducts={allProducts}
 				setAllProducts={setAllProducts}

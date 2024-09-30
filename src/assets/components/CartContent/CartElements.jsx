@@ -4,12 +4,27 @@ import { DataContext } from '../Context/DataContext';
 const CartElements = () => {
   const { cart, setCart } = useContext(DataContext);
   const [total, setTotal] = useState(0);
+  const [discountMessage, setDiscountMessage] = useState('');
+  const discountThreshold = 2; // Cantidad mínima para el descuento
+  const discountPercentage = 0.2; // 20% de descuento
 
-  // Función para calcular el total
+  // Función para calcular el total y aplicar el descuento
   useEffect(() => {
     const calculateTotal = () => {
       const newTotal = cart.reduce((acc, product) => acc + product.price * product.quantity, 0);
       setTotal(newTotal);
+      
+      // Contar la cantidad total de productos en el carrito
+      const totalQuantity = cart.reduce((acc, product) => acc + product.quantity, 0);
+      
+      // Aplicar descuento si supera el umbral
+      if (totalQuantity > discountThreshold) {
+        const discountedTotal = newTotal - (newTotal * discountPercentage);
+        setTotal(discountedTotal);
+        setDiscountMessage(`Has superado el límite de compra minorista. Se aplica un 20% de descuento.`);
+      } else {
+        setDiscountMessage('');
+      }
     };
 
     calculateTotal(); // Calcula el total cuando cambia el carrito
@@ -56,11 +71,11 @@ const CartElements = () => {
             <div className='flex items-center justify-between mb-4' key={`${product.id}-${product.color.name}-${product.size.name}`}>
               <img className='w-16' src={product.image} alt={product.model} />
               <div className="flex flex-col">
-                <h1>{product.brand}</h1>
-                <p>{product.model}</p>
-                <h3>${product.price * product.quantity}</h3> {/* Precio basado en la cantidad */}
-                <p>Color: {typeof product.color === 'object' ? product.color.name : product.color}</p>
-                <h4>Talla: {typeof product.size === 'object' ? product.size.name : product.size}</h4>
+                <h1 className='montserrat'>{product.brand}</h1>
+                <p className='montserrat'>{product.model}</p>
+                <h3 className='montserrat'>${(product.price * product.quantity).toLocaleString()}</h3>
+                <p className='montserrat'>Color: {typeof product.color === 'object' ? product.color.name : product.color}</p>
+                <h4 className='montserrat'>Talle: {typeof product.size === 'object' ? product.size.name : product.size}</h4>
 
                 {/* Botones de incrementar y decrementar */}
                 <div className="flex items-center space-x-2">
@@ -70,7 +85,7 @@ const CartElements = () => {
                   >
                     -
                   </button>
-                  <p>{product.quantity}</p> {/* Mostrar la cantidad */}
+                  <p className='montserrat'>{product.quantity}</p> {/* Mostrar la cantidad */}
                   <button
                     onClick={() => updateQuantity(product.id, product.color.name, product.size.name, 'increment')}
                     className="bg-gray-300 text-gray-800 p-2 rounded hover:bg-gray-400"
@@ -88,11 +103,14 @@ const CartElements = () => {
             </div>
           ))}
 
+          {/* Mostrar el mensaje de descuento si corresponde */}
+          {discountMessage && <p className="text-green-600 font-semibold">{discountMessage}</p>}
+
           {/* Mostrar el total del carrito */}
           <div className='mt-50 z-100'>
             <div className="border-t flex justify-between text-base font-medium text-gray-900">
               <p>Subtotal</p>
-              <p>${total}</p>
+              <p>${total.toFixed(2)}</p> {/* Mostrar total formateado */}
             </div>
 
             {/* Botón para vaciar el carrito */}

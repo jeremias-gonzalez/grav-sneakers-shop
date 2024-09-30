@@ -34,7 +34,7 @@ const CartContent = () => {
             <button onClick={handleWhatsAppClick}>Enviar carrito por WhatsApp</button>
         </div>
     ) : (
-        <h2>Tu carrito está vacío!</h2>
+        <h2 className='text-bold'>Tu carrito está vacío!</h2>
     );
 };
 

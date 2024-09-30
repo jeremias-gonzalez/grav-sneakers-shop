@@ -1,5 +1,5 @@
 .CartBtn {
-    width: 140px;
+    width: 100px;
     height: 40px;
     border-radius: 12px;
     border: none;
@@ -16,7 +16,7 @@
   
   .IconContainer {
     position: absolute;
-    left: -50px;
+    
     width: 30px;
     height: 30px;
     background-color: transparent;
@@ -76,7 +76,7 @@
 
 body {
 	margin: 0 auto;
-	max-width: 1200px;
+	
 	font-family: 'Lato';
 	color: #333;
 }
@@ -91,16 +91,9 @@ body {
 	cursor: pointer;
 }
 
-img {
-	max-width: 100%;
-}
 
 /* Header */
-header {
-	display: flex;
-	justify-content: space-between;
-	padding: 30px 0 40px 0;
-}
+
 
 .container-icon {
 	position: relative;
@@ -300,3 +293,4 @@ header {
 .animate-slide-in {
     animation: slideIn 0.5s ease-in-out forwards;
 }
+
