@@ -1,6 +1,6 @@
 import React from 'react'
 import Logo from '../Logo/Logo'
-
+import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <div>
@@ -12,7 +12,7 @@ const Footer = () => {
                 </a>
                     <ul className="text-lg flex items-center justify-center flex-col gap-7 md:flex-row md:gap-12 transition-all duration-500 py-16 mb-10 border-b border-gray-200">
                         <li><a href="#" className="text-gray-800 climate-crisis uppercase hover:text-gray-900">Inicio</a></li>
-                        <li><a href="#" className=" text-gray-800 climate-crisis uppercase hover:text-gray-900">Products</a></li>
+                        <li><Link to="/categories" className=" text-gray-800 climate-crisis uppercase hover:text-gray-900">Products</Link></li>
                         <li><a href="https://wa.link/tygjb8" target='_blank' className=" text-gray-800 climate-crisis uppercase hover:text-gray-900">Contactanos</a></li>
                         {/* <li><a href="#" className=" text-gray-800 climate-crisis uppercase hover:text-gray-900">Blogs</a></li>
                         <li><a href="#" className=" text-gray-800 climate-crisis uppercase hover:text-gray-900">Support</a></li> */}

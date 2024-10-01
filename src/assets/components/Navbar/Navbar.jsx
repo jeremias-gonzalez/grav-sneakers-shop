@@ -34,6 +34,7 @@ import Cart from '../Cart/Cart'
 import Logo from '../Logo/Logo'
 import instagram from '../../../imgs/instagram.png'
 import "./Navbar.css"
+import { Link } from 'react-router-dom'
 const navigation = {
   categories: [
     
@@ -59,10 +60,14 @@ const navigation = {
         {
           id: 'clothing',
           name: 'Importados G5',
+          // category:[
+          //  name2 = "Ver todo en Importados",
+            
+          // ],
           items: [
             { 
               name: 'Nike', 
-              href: '#',
+              href: '/categories',
               models: [
                 
                 'Air Force 1',
@@ -208,8 +213,10 @@ export default function Navbar() {
                           aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
                           className="mt-6 flex flex-col space-y-6"
                         >
-                        
+       {/* <Link></Link>                */}
+      
       {section.items.map((item) => (
+        
         <li key={item.name} className="flow-root">
           <div className="accordion-group" data-accordion="default-accordion">
             <div
