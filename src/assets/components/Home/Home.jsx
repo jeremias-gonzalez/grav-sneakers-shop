@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Navbar from "../Navbar/Navbar"
 import Products from '../Products/Products'
 import SLiderDetail from '../SliderDetail/SliderDetail';
+import Footer from '../Footer/Footer';
 const Home = () => {
   const  [countProducts,setCountProducts] = useState (0);
   const [allProducts, setAllProducts] = useState([]);
@@ -26,7 +27,8 @@ const Home = () => {
 				setTotal={setTotal}
 				countProducts={countProducts}
 				setCountProducts={setCountProducts}/>
-    </div>
+      <Footer/>      
+       </div>
   )
 }
 

@@ -1,28 +1,24 @@
-// src/components/SliderDetail/SliderDetail.js
+import {useEffect} from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-import React, { useState } from 'react';
-import './SliderDetail.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const SliderDetail = ({ images }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-  };
+  if (!Array.isArray(images)) {
+    return <div>No hay imágenes disponibles.</div>; // Manejo del caso donde images no es un array
+  }
 
   return (
-    <div className="slider-container">
-      <button onClick={prevSlide} className="slider-button prev-button">
-        &#10094;
-      </button>
-      <img src={images[currentIndex]} alt={`Product image ${currentIndex}`} className="slider-image" />
-      <button onClick={nextSlide} className="slider-button next-button">
-        &#10095;
-      </button>
+    <div>
+      <Swiper spaceBetween={10} slidesPerView={1}>
+      {images.map((image, index) => (
+        <SwiperSlide key={index}>
+          <img src={image} alt={`Product Image ${index + 1}`} className="w-full h-auto" />
+        </SwiperSlide>
+      ))}
+    </Swiper>
     </div>
   );
 };

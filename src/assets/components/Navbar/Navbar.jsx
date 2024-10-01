@@ -72,7 +72,7 @@ const navigation = {
     },
   ],
   pages: [
-    { name: 'INICIO', href: '#' },
+    { name: 'INICIO', href: '/' },
     { name: 'CONTACTATE CON NOSOTROS', href: '#' },
   ],
 }
@@ -89,7 +89,7 @@ export default function Navbar() {
           className="fixed inset-0 bg-black bg-opacity-25 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
         />
 
-        <div className="fixed inset-0 z-40 flex">
+        <div className="fixed inset-0 z-100 flex">
           <DialogPanel
             transition
             className="relative flex w-full max-w-xs transform flex-col overflow-y-auto bg-white pb-12 shadow-xl transition duration-300 ease-in-out data-[closed]:-translate-x-full"
@@ -222,7 +222,7 @@ export default function Navbar() {
                   {navigation.categories.map((category) => (
                     <Popover key={category.name} className="flex">
                       <div className="relative flex">
-                        <PopoverButton className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-xs climate-crisis text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 data-[open]:border-indigo-600 data-[open]:text-indigo-600">
+                        <PopoverButton className="relative z-100 -mb-px flex items-center border-b-2 border-transparent pt-px text-xs climate-crisis text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 data-[open]:border-indigo-600 data-[open]:text-indigo-600">
                           {category.name}
                         </PopoverButton>
                       </div>

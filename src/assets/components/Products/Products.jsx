@@ -3,6 +3,7 @@ import { DataContext } from '../Context/DataContext';
 import { Dialog, DialogBackdrop, DialogPanel, Radio, RadioGroup } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import "./cart.css";
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import SliderDetail from '../SliderDetail/SliderDetail';
 import check from '../../../imgs/check.png'
@@ -67,28 +68,53 @@ const Products = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 ">
+    <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+    <div className="grid grid-cols-2 gap-6 mt-10 lg:mt-16 lg:gap-4 lg:grid-cols-4 ">
       {data.map((product) => (
-        <div key={product.id} className="rounded-lg w-48  overflow-hidden ">
-          <img className="w-full h-48 object-cover" src={product.image} alt={product.model} />
-          <div className="p-4">
-            <h1 className="text-xl montserrat">{product.brand}</h1>
-            <p className="text-gray-700 montserrat">{product.model}</p>
-            <h3 className="text-lg montserrat">${product.price}</h3>
-            <button onClick={() => openDialog(product)} className="mt-2 p-1.5 bg-custom-blue text-white climate-crisis rounded-xl text-xs hover:bg-white hover:text-custom-blue transition  hover:shadow-lg">
-             Comprar
-            </button>
-          </div>
+            <div key={product.id} className="relative group ">
+            <div className="overflow-hidden aspect-w-1 aspect-h-1">
+                <img className="object-cover w-full h-full transition-all duration-300 group-hover:scale-125" src={product.image} alt="" />
+            </div>
+            {/* <div className="absolute left-3 top-3">
+                <p className="sm:px-3 sm:py-1 px-1.5 py-1 text-[4px] sm:text-xs climate-crisis tracking-wide text-white  bg-black rounded-full">{product.sale}</p>
+            </div> */}
+            <div className="flex items-start justify-between mt-4 space-x-4">
+                <div>
+                    <h3 className="text-xs montserrat text-gray-900 sm:text-sm md:text-base">
+                        <a href="#" title="">
+                            {product.brand}
+                            
+                            <span className="absolute inset-2" aria-hidden="true"></span>
+                        </a>
+                    </h3>
+                    <h4 className='text-xs montserrat text-gray-900 sm:text-sm md:text-base'>
+                      {product.model}
+                    </h4>
+                    <div className="flex items-center mt-2.5 space-x-px">
+                    <button onClick={() => openDialog(product)} className="mt-2 p-1.5 bg-custom-blue text-white climate-crisis rounded-xl text-xs hover:bg-white hover:text-custom-blue transition  hover:shadow-lg">
+                        Comprar
+                        </button>
+                    </div>
+                    {/* <Link to="/detail">Ver mas</Link> */}
+                </div>
+
+                <div className="text-right">
+                    <p className="text-xs montserrat text-gray-900 sm:text-xs md:text-base">${product.price}</p>
+                </div>
+            </div>
         </div>
+
+        
       ))}
+
 
       {selectedProduct && (
         <Dialog open={open} onClose={closeDialog} className="relative z-10">
           <DialogBackdrop className="fixed inset-0 bg-gray-500 bg-opacity-75" />
           <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div className="flex  items-stretch justify-center text-center">
-              <DialogPanel className="flex w-[90vw] transform text-left text-base transition">
-                <div className="relative flex w-full items-center overflow-hidden bg-white px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
+            <div className="flex   items-stretch justify-center text-center">
+              <DialogPanel className="flex w-[90vw] transition  transform text-left text-base transition">
+                <div className="relative flex w-full rounded-xl my-10 items-center overflow-hidden bg-white px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
                   <button
                     type="button"
                     onClick={closeDialog}
@@ -219,6 +245,7 @@ const Products = () => {
  </svg>  ¡Tu producto se agregó al carrito!
         </div>
       )}
+      </div>
     </div>
   );
 };

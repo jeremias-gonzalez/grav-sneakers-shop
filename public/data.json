@@ -5,7 +5,7 @@
     "model": "Air Max 270",
     "colors": [
       { "name": "Blanco", "class": "bg-white", "selectedClass": "ring-gray-400" },
-      { "name": "Verde", "class": "bg-gray-200", "selectedClass": "ring-gray-400" },
+      { "name": "Verde", "class": "bg-green-900", "selectedClass": "ring-gray-400" },
       { "name": "Negro", "class": "bg-gray-900", "selectedClass": "ring-gray-900" }
     ],
     "sizes": [
@@ -25,7 +25,9 @@
       "https://static.nike.com/a/images/t_default/e0fb6865-40f1-4610-bb5e-76540224e72c/NIKE+DOWNSHIFTER+13_1.png",
       "https://static.nike.com/a/images/t_default/e0fb6865-40f1-4610-bb5e-76540224e72c/NIKE+DOWNSHIFTER+13_2.png"
     ],
-    "quantity": 1
+    "quantity": 1,
+    "sale":"SALE"
+    
   },
   {
     "id": 2,
@@ -33,7 +35,7 @@
     "model": "Air Force 1 '07",
     "colors": [
       { "name": "Blanco", "class": "bg-white", "selectedClass": "ring-gray-400" },
-      { "name": "Verde", "class": "bg-gray-200", "selectedClass": "ring-gray-400" },
+      { "name": "Verde", "class": "bg-green-900", "selectedClass": "ring-gray-400" },
       { "name": "Negro", "class": "bg-gray-900", "selectedClass": "ring-gray-900" }
     ],
     "sizes": [
@@ -61,7 +63,7 @@
     "model": "Blazer Mid '77",
     "colors": [
       { "name": "Blanco", "class": "bg-white", "selectedClass": "ring-gray-400" },
-      { "name": "Verde", "class": "bg-gray-200", "selectedClass": "ring-gray-400" },
+      { "name": "Verde", "class": "bg-green-900", "selectedClass": "ring-gray-400" },
       { "name": "Negro", "class": "bg-gray-900", "selectedClass": "ring-gray-900" }
     ],
     "sizes": [
@@ -89,7 +91,7 @@
     "model": "V2K Run",
     "colors": [
       { "name": "Blanco", "class": "bg-white", "selectedClass": "ring-gray-400" },
-      { "name": "Verde", "class": "bg-gray-200", "selectedClass": "ring-gray-400" },
+      { "name": "Verde", "class": "bg-green-900", "selectedClass": "ring-gray-400" },
       { "name": "Negro", "class": "bg-gray-900", "selectedClass": "ring-gray-900" }
     ],
     "sizes": [
