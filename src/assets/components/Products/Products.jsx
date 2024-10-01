@@ -73,7 +73,7 @@ const Products = () => {
       {data.map((product) => (
             <div key={product.id} className="relative group ">
             <div className="overflow-hidden aspect-w-1 aspect-h-1">
-                <img className="object-cover w-full h-full transition-all duration-300 group-hover:scale-125" src={product.image} alt="" />
+                <img className="object-cover w-full h-full transition-all duration-300 sm:group-hover:scale-125 " src={product.image} alt="" />
             </div>
             {/* <div className="absolute left-3 top-3">
                 <p className="sm:px-3 sm:py-1 px-1.5 py-1 text-[4px] sm:text-xs climate-crisis tracking-wide text-white  bg-black rounded-full">{product.sale}</p>
@@ -90,8 +90,8 @@ const Products = () => {
                     <h4 className='text-xs montserrat text-gray-900 sm:text-sm md:text-base'>
                       {product.model}
                     </h4>
-                    <div className="flex items-center mt-2.5 space-x-px">
-                    <button onClick={() => openDialog(product)} className="mt-2 p-1.5 bg-custom-blue text-white climate-crisis rounded-xl text-xs hover:bg-white hover:text-custom-blue transition  hover:shadow-lg">
+                    <div className="flex items-center  mt-2.5 space-x-px">
+                    <button onClick={() => openDialog(product)} className="mt-2  p-1.5 bg-custom-blue text-white climate-crisis rounded-xl text-xs hover:bg-white hover:text-custom-blue transition  hover:shadow-lg">
                         Comprar
                         </button>
                     </div>
