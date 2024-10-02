@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
+import banner from '../../../imgs/banner.png'
 import './SliderDetail.css';
 
 // import required modules
@@ -26,8 +26,8 @@ export default function SliderDetail() {
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-        <SwiperSlide><img src="https://static01.nyt.com/images/2018/07/26/style/26SNEAKERS1/26SNEAKERS1-articleLarge-v3.jpg?quality=75&auto=webp&disable=upscale" alt="" /></SwiperSlide>
-        <SwiperSlide><img src="https://static01.nyt.com/images/2018/07/26/style/26SNEAKERS1/26SNEAKERS1-articleLarge-v3.jpg?quality=75&auto=webp&disable=upscale" alt="" /></SwiperSlide>
+        <SwiperSlide><img src={banner} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={banner} alt="" /></SwiperSlide>
         {/* <SwiperSlide>Slide 3</SwiperSlide>
         <SwiperSlide>Slide 4</SwiperSlide>
         <SwiperSlide>Slide 5</SwiperSlide>

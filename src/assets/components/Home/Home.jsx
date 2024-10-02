@@ -22,7 +22,17 @@ const Home = () => {
     <div>
       <Navbar/>
     
-      <div className="flex flex-col md:flex-row justify-center items-center p-4 bg-white">
+    
+       <SliderDetail/>
+        {/* <Carrito
+       allProducts={allProducts}
+       setAllProducts={setAllProducts}
+       total={total}
+       setTotal={setTotal}
+       countProducts={countProducts}
+       setCountProducts={setCountProducts} /> */}
+       <div>
+       <div className="flex flex-col md:flex-row justify-center items-center p-4 bg-white">
       <div className="flex flex-col items-center mb-4 md:mb-0">
         <div className="flex items-center justify-center mb-2">
         <svg width="10%" height="40%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,15 +55,6 @@ const Home = () => {
 
     
     </div>
-       <SliderDetail/>
-        {/* <Carrito
-       allProducts={allProducts}
-       setAllProducts={setAllProducts}
-       total={total}
-       setTotal={setTotal}
-       countProducts={countProducts}
-       setCountProducts={setCountProducts} /> */}
-       <div>
          
       <div className='text-center mt-10'> 
        <h1 className='climate-crisis uppercase'>Bienvenidos a <span className='text-custom-blue'>Grav</span></h1>

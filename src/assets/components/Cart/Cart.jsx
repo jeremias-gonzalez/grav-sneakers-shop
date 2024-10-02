@@ -30,7 +30,7 @@ const Cart = () => {
 
           {/* Número total de productos en el carrito */}
           {totalItems > 0 && (
-            <div className="absolute top-14 right-7 w-4 h-4 rounded-full bg-custom-blue text-white montserrat flex items-center justify-center text-xs">
+            <div className="absolute top-14 right-10 w-4 h-4 rounded-full bg-custom-blue text-white montserrat flex items-center justify-center text-xs">
               {totalItems}
             </div>
           )}
