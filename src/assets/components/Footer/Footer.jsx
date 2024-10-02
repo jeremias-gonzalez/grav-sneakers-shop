@@ -16,7 +16,33 @@ const Footer = () => {
                         <li><a href="https://wa.link/tygjb8" target='_blank' className=" text-gray-800 climate-crisis uppercase hover:text-gray-900">Contactanos</a></li>
                         {/* <li><a href="#" className=" text-gray-800 climate-crisis uppercase hover:text-gray-900">Blogs</a></li>
                         <li><a href="#" className=" text-gray-800 climate-crisis uppercase hover:text-gray-900">Support</a></li> */}
+                   <div className='flex flex-col justify-center my-10'>
+                      <h1 className='text-center montserrat my-1'>Metodos de pago</h1>
+                      <div className='flex my-2'>
+                      <img   className='w-14 mx-1' src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/mercadopago.png" alt="" />
+                      <img className='w-14 mx-1' src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/mastercard.png" alt="" />
+                      <img   className='w-14 mx-1'src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/visa.png" alt="" />
+                      <img className='w-14 mx-1' src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/maestro.png" alt="" />
+                      </div>
+                      <div className='flex'>
+                      <img  className='w-14 mx-1'src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/pagofacil.png" alt="" />
+                      <img  className='w-14 mx-1'src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/rapipago.png" alt="" />
+                      <img  className='w-14 mx-1'src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/deposito.png" alt="" />
+                      <img  className='w-14 mx-1'src="https://dk0k1i3js6c49.cloudfront.net/iconos-pago/efectivo.png" alt="" />
+                    </div>
+                    </div>
+
+                    <div className='flex flex-col justify-center '>
+                      <h1 className='text-center montserrat my-1'>Envios</h1>
+                      <div className='flex my-2'>
+                      <img   className='w-14 mx-1' src="https://dk0k1i3js6c49.cloudfront.net/iconos-envio/correo-argentino.png" alt="" />
+                      <img className='w-14 mx-1' src="https://dk0k1i3js6c49.cloudfront.net/iconos-envio/personalizado.png" alt="" />
+                  
+                      </div>
+                     
+                    </div>
                     </ul>
+                    
                     <div className="flex space-x-10 justify-center items-center mb-14">
                         {/* <a href="#" className="block  text-gray-900 transition-all duration-500 hover:text-indigo-600 ">
                           <svg className="w-[1.688rem] h-[1.688rem]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
@@ -29,6 +55,7 @@ const Footer = () => {
                                 </svg>
                                 
                         </a>
+
                         {/* <a href="#" className="block  text-gray-900 transition-all duration-500 hover:text-indigo-600 ">
                             <svg className="w-[0.938rem] h-[1.625rem]" viewBox="0 0 15 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M13.7926 14.4697L14.5174 9.86889H10.0528V6.87836C10.0528 5.62033 10.6761 4.39105 12.6692 4.39105H14.7275V0.473179C13.5289 0.282204 12.3177 0.178886 11.1037 0.164062C7.42917 0.164062 5.0302 2.37101 5.0302 6.36077V9.86889H0.957031V14.4697H5.0302V25.5979H10.0528V14.4697H13.7926Z" fill="currentColor"/>
@@ -41,7 +68,9 @@ const Footer = () => {
                                 </svg>
                                 
                         </a> */}
+                        
                     </div>
+                    
                     <span className="text-xs text-gray-500 climate-crisis text-center block">©<a href="#">Grav</a> 2024, Todos los derechos reservados.</span>
             </div>
         </div>

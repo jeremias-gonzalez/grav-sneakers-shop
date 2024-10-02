@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { FaSearch, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import data from "../../../../public/data.json"; // Asegúrate de que la ruta sea correcta
-
+import data from "../../../../public/data.json";
+import Products from "../Products/Products";
+import { Link } from "react-router-dom";
 const Categorias = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -11,48 +12,56 @@ const Categorias = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("popularity");
   const [filters, setFilters] = useState({
-    category: "",
+    brand: "",
     priceRange: "",
-    size: "",
+    sizes: "",
     color: "",
   });
 
   const productsPerPage = 8;
 
   useEffect(() => {
-    // Set products from the data.json file
     setProducts(data);
     setFilteredProducts(data);
   }, []);
 
   useEffect(() => {
-    let result = products;
+    let result = [...products];
 
-    // Apply filters
-    if (filters.category) {
-      result = result.filter((product) => product.category === filters.category);
+    // Filtro por marca
+    if (filters.brand) {
+      result = result.filter((product) => product.brand === filters.brand);
     }
+
+    // Filtro por rango de precios
     if (filters.priceRange) {
       const [min, max] = filters.priceRange.split("-");
       result = result.filter(
         (product) => product.price >= Number(min) && product.price <= Number(max)
       );
     }
-    if (filters.size) {
-      result = result.filter((product) => product.size.includes(filters.size));
+
+    // Filtro por talle (si el producto tiene varias tallas)
+    if (filters.sizes) {
+      result = result.filter((product) =>
+        product.sizes.some((size) => size.name === filters.sizes && size.inStock)
+      );
     }
+
+    // Filtro por color
     if (filters.color) {
       result = result.filter((product) => product.color === filters.color);
     }
 
-    // Apply search
+    // Aplicar búsqueda
     if (searchTerm) {
       result = result.filter((product) =>
-        product.name && product.name.toLowerCase().includes(searchTerm.toLowerCase()) // Asegúrate de que product.name esté definido
+        product.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.model.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
-    // Apply sorting
+    // Ordenar resultados
     switch (sortOption) {
       case "price-low-high":
         result.sort((a, b) => a.price - b.price);
@@ -96,15 +105,35 @@ const Categorias = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl climate-crisis mb-8">Categorias</h1>
+      <div className="container mx-auto px-10 py-8">
+      <nav aria-label="Breadcrumb">
+      <ol role="list" class="mx-auto flex max-w-2xl mt-[-1rem] ml-[-1.5rem] mb-[2rem] items-center space-x-2 px-1 sm:px-6 lg:max-w-7xl lg:px-8">
+        <li>
+          <div class="flex items-center">
+           <Link to="/"> <a href="#" className="mr-2 text-xs montserrat text-gray-900">Inicio</a></Link>
+            <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor" aria-hidden="true" className="h-5 w-4 text-gray-300">
+              <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+            </svg>
+          </div>
+        </li>
+        <li>
+          <div className="flex items-center">
+            <a href="#" className="mr-2 text-xs montserrat text-gray-900">Productos</a>
+            <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor" aria-hidden="true" className="h-5 w-4 text-gray-300">
+              <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+            </svg>
+          </div>
+        </li>
+      </ol>
+    </nav>
+        <h1 className="text-2xl climate-crisis text-center mb-8">Todos los productos</h1>
 
         {/* Search and Sort */}
         <div className="flex flex-col md:flex-row justify-between mb-6">
           <div className="relative mb-4 md:mb-0 md:w-1/3">
             <input
               type="text"
-              placeholder="Search products..."
+              placeholder="Buscar productos..."
               className="w-full montserrat pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={searchTerm}
               onChange={handleSearch}
@@ -116,26 +145,26 @@ const Categorias = () => {
             value={sortOption}
             onChange={handleSortChange}
           >
-            <option value="popularity">Mas vendido</option>
-            <option value="price-low-high">Price: Low to High</option>
-            <option value="price-high-low">Price: High to Low</option>
+            <option value="popularity">Más vendidos</option>
+            <option value="price-low-high">Precio: bajo a alto</option>
+            <option value="price-high-low">Precio: alto a bajo</option>
           </select>
         </div>
 
         {/* Filters */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <select
-            name="category"
+            name="brand"
             className="px-4 w-[10rem] py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={filters.category}
+            value={filters.brand}
             onChange={handleFilterChange}
           >
             <option value="">Todas las marcas</option>
-            <option value="Running">Nike</option>
-            <option value="Training">Vans</option>
-            <option value="Lifestyle">New Balance</option>
-            <option value="Basketball">Puma</option>
-            <option value="Skateboarding">Adidas</option>
+            <option value="Nike">Nike</option>
+            <option value="Vans">Vans</option>
+            <option value="New Balance">New Balance</option>
+            <option value="Puma">Puma</option>
+            <option value="Adidas">Adidas</option>
           </select>
           <select
             name="priceRange"
@@ -149,9 +178,9 @@ const Categorias = () => {
             <option value="151-200">$151 - $200</option>
           </select>
           <select
-            name="size"
+            name="sizes"
             className="px-4 py-2 w-[10rem] border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={filters.size}
+            value={filters.sizes}
             onChange={handleFilterChange}
           >
             <option value="">Talles</option>
@@ -161,6 +190,7 @@ const Categorias = () => {
             <option value="38">38</option>
             <option value="39">39</option>
             <option value="40">40</option>
+            <option value="41">41</option>
           </select>
           {/* <select
             name="color"
@@ -168,77 +198,30 @@ const Categorias = () => {
             value={filters.color}
             onChange={handleFilterChange}
           >
-            <option value="">All Colors</option>
-            <option value="Black">Black</option>
-            <option value="White">White</option>
-            <option value="Blue">Blue</option>
-            <option value="Red">Red</option>
-            <option value="Gray">Gray</option>
-            <option value="Green">Green</option>
+            <option value="">Colores</option>
+            <option value="rojo">Rojo</option>
+            <option value="verde">Verde</option>
+            <option value="azul">Azul</option>
+            <option value="negro">Negro</option>
+            <option value="blanco">Blanco</option>
           </select> */}
         </div>
 
-        {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {currentProducts.map((product) => (
-            <div
-              key={product.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105"
-            >
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-4">
-                <h2 className="text-lg font-semibold mb-2">{product.model}</h2>
-                <p className="text-gray-600 mb-2">${product.price}</p>
-                <p className="text-sm text-gray-500 mb-4">{product.brand}</p>
-                <button className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300">
-                  Quick View
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Displaying Products */}
+        <Products filteredProducts={currentProducts} />
+
 
         {/* Pagination */}
         <div className="flex justify-center mt-8">
-          <nav className="inline-flex rounded-md shadow">
+          {Array.from({ length: Math.ceil(filteredProducts.length / productsPerPage) }, (_, index) => (
             <button
-              onClick={() => paginate(currentPage - 1)}
-              disabled={currentPage === 1}
-              className="px-3 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+              key={index + 1}
+              className={`px-4 py-2 mx-1 border rounded-lg ${currentPage === index + 1 ? "bg-blue-500 text-white" : "bg-white text-blue-500"}`}
+              onClick={() => paginate(index + 1)}
             >
-              <FaChevronLeft />
+              {index + 1}
             </button>
-            {Array.from(
-              { length: Math.ceil(filteredProducts.length / productsPerPage) },
-              (_, i) => (
-                <button
-                  key={i}
-                  onClick={() => paginate(i + 1)}
-                  className={`px-3 py-2 border border-gray-300 bg-white text-sm font-medium ${
-                    currentPage === i + 1
-                      ? "text-blue-600 bg-blue-50"
-                      : "text-gray-500 hover:bg-gray-50"
-                  }`}
-                >
-                  {i + 1}
-                </button>
-              )
-            )}
-            <button
-              onClick={() => paginate(currentPage + 1)}
-              disabled={
-                currentPage ===
-                Math.ceil(filteredProducts.length / productsPerPage)
-              }
-              className="px-3 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
-            >
-              <FaChevronRight />
-            </button>
-          </nav>
+          ))}
         </div>
       </div>
       <Footer />
@@ -247,4 +230,3 @@ const Categorias = () => {
 };
 
 export default Categorias;
-

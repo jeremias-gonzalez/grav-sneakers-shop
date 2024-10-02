@@ -59,73 +59,73 @@ const navigation = {
       sections: [
         {
           id: 'clothing',
-          name: 'Importados G5',
+          name: 'Ver todo en Productos',
+          href :" /categories",
           // category:[
           //  name2 = "Ver todo en Importados",
             
           // ],
           items: [
             { 
-              name: 'Nike', 
+              name: 'Sneakers', 
               href: '/categories',
               models: [
                 
-                'Air Force 1',
-                'Air Max 270',
-                'Blazer Mid',
-                'React Infinity Run',
-                'Dunk Low'
-              ] 
-            },
-            { 
-              name: 'New Balance', 
-              href: '#',
-              models: [
+                'Ver todo en sneakers',
+                'Hombres',
+                'Mujeres',
                 
-                '574',
-                '990v5',
-                '327',
-                '550',
-                '997H'
               ] 
             },
-            { 
-              name: 'Adidas', 
-              href: '#',
-              models: [
+            // { 
+            //   name: 'New Balance', 
+            //   href: '#',
+            //   models: [
                 
-                'Ultraboost',
-                'Superstar',
-                'Stan Smith',
-                'NMD_R1',
-                'ZX 2K Boost'
-              ] 
-            },
-            { 
-              name: 'Puma', 
-              href: '#',
-              models: [
+            //     '574',
+            //     '990v5',
+            //     '327',
+            //     '550',
+            //     '997H'
+            //   ] 
+            // },
+            // { 
+            //   name: 'Adidas', 
+            //   href: '#',
+            //   models: [
                 
-                'RS-X',
-                'Cali',
-                'Future Rider',
-                'Suede Classic',
-                'Cell Alien'
-              ] 
-            },
-            { 
-              name: 'Vans', 
-              href: '#',
-              models: [
+            //     'Ultraboost',
+            //     'Superstar',
+            //     'Stan Smith',
+            //     'NMD_R1',
+            //     'ZX 2K Boost'
+            //   ] 
+            // },
+            // { 
+            //   name: 'Puma', 
+            //   href: '#',
+            //   models: [
                 
-                'Knu Classic',
-                'Old Skool',
-                'Sk8-Hi',
-                'Authentic',
-                'Era',
-                'Slip-On'
-              ] 
-            },
+            //     'RS-X',
+            //     'Cali',
+            //     'Future Rider',
+            //     'Suede Classic',
+            //     'Cell Alien'
+            //   ] 
+            // },
+            // { 
+            //   name: 'Vans', 
+            //   href: '#',
+            //   models: [
+                
+            //     'Knu Classic',
+            //     'Old Skool',
+            //     'Sk8-Hi',
+            //     'Authentic',
+            //     'Era',
+            //     'Slip-On'
+            //   ] 
+            // },
           ],
         },
        
@@ -134,7 +134,7 @@ const navigation = {
   ],
   pages: [
     { name: 'INICIO', href: '/' },
-    { name: 'CONTACTATE CON NOSOTROS', href: '#' },
+    { name: 'CONTACTANOS', href: '#' },
   ],
 }
 
@@ -187,7 +187,7 @@ export default function Navbar() {
               <TabPanels as={Fragment}>
                 {navigation.categories.map((category) => (
                   <TabPanel key={category.name} className="space-y-10 px-4 pb-8 pt-10">
-                    <div className="grid grid-cols-2 gap-x-4">
+                   <div className="grid grid-cols-2 gap-x-4">
                       {category.featured.map((item) => (
                         <div key={item.name} className="group relative text-sm">
                           <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
@@ -204,7 +204,7 @@ export default function Navbar() {
                           </Link>
                         </div>
                       ))}
-                    </div>
+                    </div> 
                     {category.sections.map((section) => (
                       <div key={section.name}>
                         <p id={`${category.id}-${section.id}-heading-mobile`} className="climate-crisis text-custom-blue">

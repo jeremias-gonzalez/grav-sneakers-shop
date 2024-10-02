@@ -9,7 +9,12 @@ const DataProvider = ({ children }) => {
   const [cart,setCart] = useState([])
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isCartOpen, setIsCartOpen] = useState(false); // Nuevo estado para el carrito
-
+  const [filters, setFilters] = useState({
+    brand: '',
+    priceRange: [0, 1000],
+    size: '',
+    color: '',
+  });
   const toggleCart = () => {
     setIsCartOpen(prev => !prev);
   };
@@ -20,7 +25,7 @@ const DataProvider = ({ children }) => {
   }, []);
 
   return (
-    <DataContext.Provider value={{ data, cart , setCart , selectedProduct, setSelectedProduct, isCartOpen, toggleCart }}>
+    <DataContext.Provider value={{ data, cart , setCart , selectedProduct, setSelectedProduct, isCartOpen, toggleCart , filters, setFilters }}>
       {children}
     </DataContext.Provider>
   );
