@@ -193,6 +193,7 @@ export default function Navbar() {
                           <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
                             <img alt={item.imageAlt} src={item.imageSrc} className="object-cover object-center" />
                           </div>
+                          <Link to="/categories">
                           <a href={item.href} className="mt-6 block climate-crisis text-gray-900">
                             <span aria-hidden="true" className="absolute inset-0 z-10" />
                             {item.name}
@@ -200,6 +201,7 @@ export default function Navbar() {
                           <p aria-hidden="true" className="mt-1 montserrat">
                             Shop now
                           </p>
+                          </Link>
                         </div>
                       ))}
                     </div>
