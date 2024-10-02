@@ -69,43 +69,34 @@ const Products = () => {
 
   return (
     <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-    <div className="grid grid-cols-2 gap-6 mt-10 lg:mt-16 lg:gap-4 lg:grid-cols-4 ">
-      {data.map((product) => (
-            <div key={product.id} className="relative group ">
-            <div className="overflow-hidden aspect-w-1 aspect-h-1">
-                <img className="object-cover w-full h-full transition-all duration-300 sm:group-hover:scale-125 " src={product.image} alt="" />
-            </div>
-            {/* <div className="absolute left-3 top-3">
-                <p className="sm:px-3 sm:py-1 px-1.5 py-1 text-[4px] sm:text-xs climate-crisis tracking-wide text-white  bg-black rounded-full">{product.sale}</p>
-            </div> */}
-            <div className="flex items-start justify-between mt-4 space-x-4">
-                <div>
-                    <h3 className="text-xs montserrat text-gray-900 sm:text-sm md:text-base">
-                        <a href="#" title="">
-                            {product.brand}
-                            
-                            <span className="absolute inset-2" aria-hidden="true"></span>
-                        </a>
-                    </h3>
-                    <h4 className='text-xs montserrat text-gray-900 sm:text-sm md:text-base'>
-                      {product.model}
-                    </h4>
-                    <div className="flex items-center  mt-2.5 space-x-px">
-                    <button onClick={() => openDialog(product)} className="mt-2  p-1.5 bg-custom-blue text-white climate-crisis rounded-xl text-xs hover:bg-white hover:text-custom-blue transition  hover:shadow-lg">
-                        Comprar
-                        </button>
-                    </div>
-                    {/* <Link to="/detail">Ver mas</Link> */}
-                </div>
+<div className="grid grid-cols-2 gap-6 mt-10 lg:mt-16 lg:gap-4 lg:grid-cols-4">
+  {data.map((product) => (
+    <div key={product.id} className="relative group bg-white p-4 transition-all ">
+      <div className="overflow-hidden rounded-md">
+        <img
+          className="object-cover w-full h-full rounded-md transition-transform duration-300 group-hover:scale-105"
+          src={product.image}
+          alt={product.model}
+        />
+      </div>
+      <div className="mt-4">
+        <h3 className="text-sm montserrat text-gray-800 group-hover:text-custom-blue">
+          {product.brand}
+        </h3>
+        <p className="text-xs montserrat text-gray-500 mt-1">{product.model}</p>
+        <p className="text-base montserrat text-gray-900 mt-2">${product.price}</p>
+      </div>
+      <div className="mt-4">
+        <button
+          onClick={() => openDialog(product)}
+          className="w-full p-2 bg-custom-blue text-white rounded-md text-sm montserrat hover:bg-white hover:text-custom-blue border border-custom-blue transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom-blue"
+        >
+          Comprar
+        </button>
+      </div>
+    </div>
+  ))}
 
-                <div className="text-right">
-                    <p className="text-xs montserrat text-gray-900 sm:text-xs md:text-base">${product.price}</p>
-                </div>
-            </div>
-        </div>
-
-        
-      ))}
 
 
       {selectedProduct && (
