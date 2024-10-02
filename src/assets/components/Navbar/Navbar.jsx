@@ -334,7 +334,7 @@ export default function Navbar() {
           transition
           className="absolute inset-x-0 top-full text-sm text-gray-500 transition data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
         >
-          <div aria-hidden="true" className="absolute inset-0 top-1/2 bg-white shadow" />
+          <div aria-hidden="true" className="absolute inset-0 top-full bg-white shadow" />
 
           <div className="relative bg-white z-10000">
             <div className="mx-auto max-w-7xl px-8">
