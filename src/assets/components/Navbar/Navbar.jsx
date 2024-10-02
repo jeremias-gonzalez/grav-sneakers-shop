@@ -1,18 +1,4 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
-'use client'
+
 
 import { Fragment, useState } from 'react'
 import {
@@ -417,7 +403,7 @@ export default function Navbar() {
 </PopoverGroup>
 
 
-              <div className="ml-auto flex items-center">
+          <div className="ml-auto flex items-center">
             
 
            
