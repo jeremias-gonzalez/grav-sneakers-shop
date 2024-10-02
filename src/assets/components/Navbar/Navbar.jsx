@@ -313,10 +313,10 @@ export default function Navbar() {
 
               {/* Logo */}
               <div className="mx-auto lg:ml-0">
-                <a className='' href="#">
+              <Link to="/">
                  
                  <Logo/>
-                </a>
+                </Link>
               </div>
 
               {/* Flyout menus */}

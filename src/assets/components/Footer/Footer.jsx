@@ -72,8 +72,10 @@ const Footer = () => {
                         </a> */}
                         
                     </div>
-                    
+                    <div className='flex flex-col'>
                     <span className="text-xs text-gray-500 climate-crisis text-center block">©<a href="#">Grav</a> 2024, Todos los derechos reservados.</span>
+                    <a className='text-transparent text-center montserrat2 my-3 bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 bg-clip-text' href="https://jeremiasgonzalez.vercel.app/" target='_blank'>Design by Jeremias Gonzalez</a>
+                    </div>
             </div>
         </div>
     </footer>
