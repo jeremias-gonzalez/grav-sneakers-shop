@@ -312,7 +312,7 @@ export default function Navbar() {
               </button>
 
               {/* Logo */}
-              <div className="ml-28 flex lg:ml-0">
+              <div className="mx-auto lg:ml-0">
                 <a className='' href="#">
                  
                  <Logo/>
