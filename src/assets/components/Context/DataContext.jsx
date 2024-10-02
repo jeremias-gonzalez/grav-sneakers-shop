@@ -7,14 +7,20 @@ export const DataContext = createContext();
 const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [cart,setCart] = useState([])
- 
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isCartOpen, setIsCartOpen] = useState(false); // Nuevo estado para el carrito
+
+  const toggleCart = () => {
+    setIsCartOpen(prev => !prev);
+  };
+
   useEffect(() => {
     // Cargar los datos desde el archivo JSON
     axios("data.json").then((res) => setData(res.data));
   }, []);
 
   return (
-    <DataContext.Provider value={{ data, cart , setCart }}>
+    <DataContext.Provider value={{ data, cart , setCart , selectedProduct, setSelectedProduct, isCartOpen, toggleCart }}>
       {children}
     </DataContext.Provider>
   );
