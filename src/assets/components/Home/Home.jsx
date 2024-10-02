@@ -40,7 +40,7 @@ const Home = () => {
  </svg>
         </div>
         <h3 className="text-md montserrat text-gray-800">ENVIAMOS TU COMPRA</h3>
-        <p className="text-gray-600 text-xs">Entregas a todo el país</p>
+        <p className="text-gray-600 montserrat text-xs">Entregas a todo el país</p>
       </div>
 
       <div className="flex flex-col items-center mb-4 md:mb-0">

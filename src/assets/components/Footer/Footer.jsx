@@ -10,12 +10,13 @@ const Footer = () => {
                 <a href="#" className="flex justify-center ">
                  <Logo/>
                 </a>
-                    <ul className="text-lg flex items-center justify-center flex-col gap-7 md:flex-row md:gap-12 transition-all duration-500 py-16 mb-10 border-b border-gray-200">
+                    <ul className="text-lg flex md:flex-col items-center justify-center flex-col gap-7 md:flex-row md:gap-12 transition-all duration-500 py-16 mb-10 border-b border-gray-200">
                         <li><a href="#" className="text-gray-800 climate-crisis uppercase hover:text-gray-900">Inicio</a></li>
                         <li><Link to="/categories" className=" text-gray-800 climate-crisis uppercase hover:text-gray-900">Products</Link></li>
                         <li><a href="https://wa.link/tygjb8" target='_blank' className=" text-gray-800 climate-crisis uppercase hover:text-gray-900">Contactanos</a></li>
                         {/* <li><a href="#" className=" text-gray-800 climate-crisis uppercase hover:text-gray-900">Blogs</a></li>
                         <li><a href="#" className=" text-gray-800 climate-crisis uppercase hover:text-gray-900">Support</a></li> */}
+                  <div className='md:flex'>
                    <div className='flex flex-col justify-center my-10'>
                       <h1 className='text-center montserrat my-1'>Metodos de pago</h1>
                       <div className='flex my-2'>
@@ -32,14 +33,15 @@ const Footer = () => {
                     </div>
                     </div>
 
-                    <div className='flex flex-col justify-center '>
+                    <div className='flex flex-col justify-center mx-10 '>
                       <h1 className='text-center montserrat my-1'>Envios</h1>
-                      <div className='flex my-2'>
-                      <img   className='w-14 mx-1' src="https://dk0k1i3js6c49.cloudfront.net/iconos-envio/correo-argentino.png" alt="" />
-                      <img className='w-14 mx-1' src="https://dk0k1i3js6c49.cloudfront.net/iconos-envio/personalizado.png" alt="" />
+                      <div className='flex my-2 md:my-[2.1rem]'>
+                      <img className='w-14 mx-1 md:mt-[-1.4rem]' src="https://dk0k1i3js6c49.cloudfront.net/iconos-envio/correo-argentino.png" alt="" />
+                      <img className='w-14 mx-1 md:mt-[-1.4rem]' src="https://dk0k1i3js6c49.cloudfront.net/iconos-envio/personalizado.png" alt="" />
                   
                       </div>
                      
+                    </div>
                     </div>
                     </ul>
                     
