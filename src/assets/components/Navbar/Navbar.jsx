@@ -326,8 +326,8 @@ export default function Navbar() {
               </button>
 
               {/* Logo */}
-              <div className="ml-20 flex lg:ml-0">
-                <a href="#">
+              <div className="ml-28 flex lg:ml-0">
+                <a className='' href="#">
                  
                  <Logo/>
                 </a>
