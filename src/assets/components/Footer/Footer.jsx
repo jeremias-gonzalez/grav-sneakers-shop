@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../Logo/Logo'
+import logo from "../../../imgs/grav-high-resolution-logo-transparent.png"
 import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto">
                 <a href="#" className="flex justify-center ">
-                 <Logo/>
+                 <img className='w-20' src={logo} alt="" />
                 </a>
                     <ul className="text-lg flex md:flex-col items-center justify-center flex-col gap-7 md:flex-row md:gap-12 transition-all duration-500 py-16 mb-10 border-b border-gray-200">
                         <li><a href="#" className="text-gray-800 climate-crisis uppercase hover:text-gray-900">Inicio</a></li>
