@@ -2,6 +2,7 @@
 import React, { useContext, useState } from 'react';
 import { DataContext } from '../Context/DataContext';
 import ProductDialog from '../ProductDialog/ProductDialog';
+import './animate.css';
 
 const Products = ({ filteredProducts }) => {
   const { data } = useContext(DataContext);
@@ -40,6 +41,7 @@ const Products = ({ filteredProducts }) => {
               </div>
               <div className="mt-4">
                 <button
+                
                   onClick={() => openDialog(product)}
                   className="w-full p-2 bg-custom-blue text-white rounded-md text-sm montserrat hover:bg-white hover:text-custom-blue border border-custom-blue transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom-blue"
                 >
@@ -52,14 +54,15 @@ const Products = ({ filteredProducts }) => {
           <p className="text-center text-gray-500">No hay productos disponibles.</p>
         )}
       </div>
-
       {selectedProduct && (
-        <ProductDialog
-          product={selectedProduct}
-          open={open}
-          closeDialog={closeDialog}
-        />
-      )}
+  <div className=" animate__fadeInUp">
+    <ProductDialog
+      product={selectedProduct}
+      open={open}
+      closeDialog={closeDialog}
+    />
+  </div>
+)}
     </div>
   );
 };

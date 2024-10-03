@@ -27,7 +27,7 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false); // Cambia el estado a false después de 3 segundos
-    }, 2000);
+    }, 2500);
 
     // Limpiar el timer si el componente se desmonta
     return () => clearTimeout(timer);
@@ -65,8 +65,8 @@ const Home = () => {
           <p className='mt-3 text-md montserrat text-gray-400'>Te invitamos a explorar todo lo mejor que tenemos para vos!</p>
           <Link to="/categories">
           <div className='flex my-10 justify-center  '>
-             <p className='underline  text-custom-blue montserrat'>Ver todo en Productos</p>
-             <svg width="3%" height="3%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-custom-blue mt-1.5 mx-1">
+             <p className='underline  text-custom-blue montserrat '>Ver todo en Productos</p>
+             <svg width="3%" height="3%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-custom-blue svg-hover mt-1.5 mx-1 md:w-5 md:my-1 md:ml-[-.1rem]">
   <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>        
           </div>

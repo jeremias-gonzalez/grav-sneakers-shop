@@ -134,25 +134,31 @@ const ProductDialog = ({ product, open, closeDialog }) => {
               </fieldset>
 
               {/* Cantidad */}
-              <div className="mt-4 border rounded-xl w-[30%] flex items-center space-x-7">
-                <button
-                  onClick={() => setQuantity(prev => Math.max(prev - 1, 1))}
-                  className="bg-gray-300 text-gray-800 p-1 rounded hover:bg-gray-400"
-                >
-                  -
-                </button>
-                <span className="mx-2 montserrat">{quantity}</span>
-                <button
-                  onClick={() => setQuantity(prev => prev + 1)}
-                  className="bg-gray-300 text-gray-800 p-1 rounded hover:bg-gray-400"
-                >
-                  +
-                </button>
-              </div>
+              <div className="mt-4 border border-gray-300 rounded-xl w-[30%] flex items-center justify-between">
+  <div className="border-r border-gray-300 pr-2">
+    <button
+      onClick={() => setQuantity(prev => Math.max(prev - 1, 1))}
+      className=" text-custom-blue p-1 rounded-lg "
+    >
+      -
+    </button>
+  </div>
+  <span className="mx-2 font-semibold text-lg montserrat text-gray-800">{quantity}</span>
+  <div className="border-l border-gray-300 pl-2">
+    <button
+      onClick={() => setQuantity(prev => prev + 1)}
+      className=" text-custom-blue p-1 rounded-lg "
+    >
+      +
+    </button>
+  </div>
+</div>
+
+
 
               <button
                 onClick={handleAddToCart}
-                className="w-full bg-custom-blue text-white rounded-md mt-6"
+                className="w-full bg-custom-blue text-white rounded-md mt-6 p-2"
               >
                 Añadir al carrito
               </button>
