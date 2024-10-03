@@ -97,7 +97,7 @@ const Home = () => {
               onClick={handleLoadMore}
               className="text-custom-blue my-10 underline montserrat rounded-md"
             >
-              {loadingMore ? <Loader /> : 'Ver más'}
+              
             </button>
           </div>
         )}
