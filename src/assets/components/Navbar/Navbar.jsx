@@ -131,7 +131,7 @@ export default function Navbar() {
     setOpenAccordion(openAccordion === name ? null : name);
   };
     return (
-    <div className="bg-white">
+    <div className=" sticky top-0 z-50 bg-white">
       {/* Mobile menu */}
       <Dialog open={open} onClose={setOpen} className="relative z-40 lg:hidden">
         <DialogBackdrop
@@ -283,7 +283,7 @@ export default function Navbar() {
         </div>
       </Dialog>
 
-      <header className="relative bg-white">
+      <header className="  relative bg-white">
       <div className="overflow-hidden bg-custom-blue">
   <div className="whitespace-nowrap animate-marquee flex">
     <p className="flex h-10 items-center justify-center px-4 text-sm montserrat text-white sm:px-6 lg:px-8">
@@ -325,42 +325,41 @@ export default function Navbar() {
     {navigation.categories.map((category) => (
       <Popover key={category.name} className="flex">
         <div className="relative flex">
-          <PopoverButton className="relative z-100 -mb-px flex items-center border-b-2 border-transparent pt-px text-xs climate-crisis text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 data-[open]:border-indigo-600 data-[open]:text-indigo-600">
+          <PopoverButton className="relative z-[100] -mb-px flex items-center border-b-2 border-transparent pt-px text-xs climate-crisis text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 data-[open]:border-indigo-600 data-[open]:text-indigo-600">
             {category.name}
           </PopoverButton>
         </div>
 
         <PopoverPanel
           transition
-          className="absolute inset-x-0 top-full text-sm text-gray-500 transition data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+          className="absolute inset-x-0 top-full text-sm text-gray-500 transition data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in z-[10000]" // Aseguramos que tenga un z-index muy alto
         >
           <div aria-hidden="true" className="absolute inset-0 top-full bg-white shadow" />
 
-          <div className="relative bg-white z-10000">
-            <div className="mx-auto max-w-7xl px-8">
+          <div className="relative bg-white z-[10000]"> {/* Aseguramos que tenga un z-index muy alto */}
+            <div className="mx-auto max-w-7xl px-11">
               <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
                 <div className="col-start-2 grid grid-cols-2 gap-x-8">
                   {category.featured.map((item) => (
                     <div key={item.name} className="group relative text-base sm:text-sm">
-                  <div className="relative bg-white p-4">
-                    <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg bg-white">
-                      <img
-                        src={item.imageSrc}
-                        alt={item.imageAlt}
-                        className="w-full h-full object-contain bg-white"
-                      />
+                      <div className="relative bg-white p-4 z-[10000]"> {/* Aseguramos que tenga un z-index muy alto */}
+                        <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg bg-white">
+                          <img
+                            src={item.imageSrc}
+                            alt={item.imageAlt}
+                            className="w-full h-full object-contain bg-white"
+                          />
+                        </div>
+                        <a href={item.href} className="mt-6 block montserrat text-gray-900">
+                          <span aria-hidden="true" className="absolute inset-0" />
+                          {item.name}
+                        </a>
+                        <p className="mt-1 climate-crisis text-gray-500">Shop now</p>
+                      </div>
                     </div>
-                    <a href={item.href} className="mt-6 block text-gray-900">
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {item.name}
-                    </a>
-                    <p className="mt-1 text-gray-500">Shop now</p>
-                  </div>
-                  </div>
                   ))}
                 </div>
 
-                {/* Aquí ajustamos la disposición de las secciones y los ítems */}
                 <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
                   {category.sections.map((section) => (
                     <div key={section.name} className="flex flex-col">

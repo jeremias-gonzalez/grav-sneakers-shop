@@ -138,7 +138,7 @@ const Categorias = () => {
         </li>
       </ol>
     </nav>
-        <h1 className="text-2xl climate-crisis text-center mb-8">Todos los productos</h1>
+        <h1 className="text-2xl climate-crisis text-center md:ml-[20rem] mb-8 md:mb-[3rem]">Todos los productos</h1>
 
         <div className="flex flex-col md:flex-row">
   {/* Left Sidebar: Filters and Search */}
@@ -216,7 +216,7 @@ const Categorias = () => {
     
     <Suspense fallback={<Skeleton />}>
             {!isLoading ? (
-              <div className='animate__fadeInUp'>
+              <div className='md:mt-[-5rem]'>
               <Products filteredProducts={currentProducts} />
               </div>
             ) : (

@@ -94,7 +94,7 @@ const Cart = () => {
 
                     {/* Cargando el contenido del carrito o mostrando el Loader */}
                     {loading ? (
-                      <div className='flex justify-center'>
+                      <div className='flex justify-center my-[25rem] md:my-[12rem]'>
                       <Loader />
                       </div> // Muestra el Loader mientras se carga
                     ) : (

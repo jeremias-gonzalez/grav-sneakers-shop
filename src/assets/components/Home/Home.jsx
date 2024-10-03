@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect, lazy, Suspense } from 'react';
-import Navbar from "../Navbar/Navbar";
+import Navbar from '../Navbar/Navbar';
 import { DataContext } from '../Context/DataContext';
 import Footer from '../Footer/Footer';
 import SliderDetail from '../SliderDetail/SliderDetail';
