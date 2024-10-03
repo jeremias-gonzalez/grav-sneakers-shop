@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { DataContext } from '../Context/DataContext';
-import trashicon from '../../../imgs/trash-bin-icon.png';
+import trashicon from '/public/imgs/trash-bin-icon.png';
 
 const CartElements = () => {
   const { cart, setCart } = useContext(DataContext);

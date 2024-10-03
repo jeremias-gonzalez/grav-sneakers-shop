@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, lazy, Suspense } from 'react';
 import { DataContext } from '../Context/DataContext';
-import carticon from '../../../imgs/shopping-cart.png'; // Asegúrate de tener la ruta correcta para el ícono
+import carticon from '/public/imgs/shopping-cart.png'; // Asegúrate de tener la ruta correcta para el ícono
 import Loader from '../ui/loader'; // Importa tu componente Loader
 
 // Lazy load del componente CartContent

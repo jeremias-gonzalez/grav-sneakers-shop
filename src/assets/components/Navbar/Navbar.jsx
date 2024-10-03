@@ -18,7 +18,7 @@ import {
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Cart from '../Cart/Cart'
 import Logo from '../Logo/Logo'
-import instagram from '../../../imgs/instagram.png'
+import instagram from '/public/imgs/instagram.png'
 import "./Navbar.css"
 import { Link } from 'react-router-dom'
 const navigation = {

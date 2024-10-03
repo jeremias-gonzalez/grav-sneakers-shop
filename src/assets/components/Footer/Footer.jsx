@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from "../../../imgs/grav-high-resolution-logo-transparent.png"
+import logo from "/public/imgs/grav-high-resolution-logo-transparent.png"
 import { Link } from 'react-router-dom'
 const Footer = () => {
   return (

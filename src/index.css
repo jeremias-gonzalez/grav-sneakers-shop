@@ -1,9 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* body{
-  background-color: rgb(255, 253, 250);
-} */
+ 
 .climate-crisis {
     font-family: "Climate Crisis", sans-serif;
     font-optical-sizing: auto;
