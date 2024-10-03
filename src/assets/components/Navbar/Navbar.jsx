@@ -23,7 +23,6 @@ import "./Navbar.css"
 import { Link } from 'react-router-dom'
 const navigation = {
   categories: [
-    
     {
       id: 'men',
       name: 'PRODUCTOS',
@@ -46,75 +45,19 @@ const navigation = {
         {
           id: 'clothing',
           name: 'Ver todo en Productos',
-          href :" /categories",
-          // category:[
-          //  name2 = "Ver todo en Importados",
-            
-          // ],
+          href: "/categories",
           items: [
             { 
               name: 'Sneakers', 
               href: '/categories',
               models: [
-                
-                'Ver todo en sneakers',
-                'Hombres',
-                'Mujeres',
-                
+                { name: 'Ver todo en sneakers', href: '/categories' },
+                { name: 'Hombres', href: '/categories' },
+                { name: 'Mujeres', href: '/categories' },
               ] 
             },
-            // { 
-            //   name: 'New Balance', 
-            //   href: '#',
-            //   models: [
-                
-            //     '574',
-            //     '990v5',
-            //     '327',
-            //     '550',
-            //     '997H'
-            //   ] 
-            // },
-            // { 
-            //   name: 'Adidas', 
-            //   href: '#',
-            //   models: [
-                
-            //     'Ultraboost',
-            //     'Superstar',
-            //     'Stan Smith',
-            //     'NMD_R1',
-            //     'ZX 2K Boost'
-            //   ] 
-            // },
-            // { 
-            //   name: 'Puma', 
-            //   href: '#',
-            //   models: [
-                
-            //     'RS-X',
-            //     'Cali',
-            //     'Future Rider',
-            //     'Suede Classic',
-            //     'Cell Alien'
-            //   ] 
-            // },
-            // { 
-            //   name: 'Vans', 
-            //   href: '#',
-            //   models: [
-                
-            //     'Knu Classic',
-            //     'Old Skool',
-            //     'Sk8-Hi',
-            //     'Authentic',
-            //     'Era',
-            //     'Slip-On'
-            //   ] 
-            // },
           ],
         },
-       
       ],
     },
   ],
@@ -123,7 +66,6 @@ const navigation = {
     { name: 'CONTACTANOS', href: '#' },
   ],
 }
-
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [openAccordion, setOpenAccordion] = useState(null);
@@ -131,14 +73,13 @@ export default function Navbar() {
     setOpenAccordion(openAccordion === name ? null : name);
   };
     return (
-    <div className=" sticky top-0 z-50 bg-white">
+      <div className="sticky top-0 z-50 bg-white">
       {/* Mobile menu */}
       <Dialog open={open} onClose={setOpen} className="relative z-40 lg:hidden">
         <DialogBackdrop
           transition
           className="fixed inset-0 bg-black bg-opacity-25 transition-opacity duration-300 ease-linear data-[closed]:opacity-0"
         />
-
         <div className="fixed inset-0 z-100 flex">
           <DialogPanel
             transition
@@ -173,24 +114,24 @@ export default function Navbar() {
               <TabPanels as={Fragment}>
                 {navigation.categories.map((category) => (
                   <TabPanel key={category.name} className="space-y-10 px-4 pb-8 pt-10">
-                   <div className="grid grid-cols-2 gap-x-4">
+                    <div className="grid grid-cols-2 gap-x-4">
                       {category.featured.map((item) => (
                         <div key={item.name} className="group relative text-sm">
                           <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
                             <img alt={item.imageAlt} src={item.imageSrc} className="object-cover object-center" />
                           </div>
-                          <Link to="/categories">
-                          <a href={item.href} className="mt-6 block climate-crisis text-gray-900">
-                            <span aria-hidden="true" className="absolute inset-0 z-10" />
-                            {item.name}
-                          </a>
+                          <Link to={item.href}>
+                            <span className="mt-6 block climate-crisis text-gray-900">
+                              <span aria-hidden="true" className="absolute inset-0 z-10" />
+                              {item.name}
+                            </span>
+                          </Link>
                           <p aria-hidden="true" className="mt-1 montserrat">
                             Shop now
                           </p>
-                          </Link>
                         </div>
                       ))}
-                    </div> 
+                    </div>
                     {category.sections.map((section) => (
                       <div key={section.name}>
                         <p id={`${category.id}-${section.id}-heading-mobile`} className="climate-crisis text-custom-blue">
@@ -201,57 +142,56 @@ export default function Navbar() {
                           aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
                           className="mt-6 flex flex-col space-y-6"
                         >
-       {/* <Link></Link>                */}
-      
-      {section.items.map((item) => (
-        
-        <li key={item.name} className="flow-root">
-          <div className="accordion-group" data-accordion="default-accordion">
-            <div
-              className="group accordion px-1   transition-all duration-500  accordion-active:bg-indigo-50"
-              id={`heading-${item.name}`}
-            >
-              <button
-                onClick={() => toggleAccordion(item.name)}
-                className="accordion-toggle group inline-flex items-center justify-between text-left leading-8 text-gray-900 w-full transition duration-500 group-hover:text-indigo-600 accordion-active:text-indigo-600"
-                aria-controls={`collapse-${item.name}`}
-              >
-                <h3 className='montserrat'>{item.name}</h3>
-                <svg
-                  className={`text-gray-400 transition duration-500 w-6 h-6 group-hover:text-indigo-600 accordion-active:text-indigo-600 ${openAccordion === item.name ? 'rotate-90' : ''}`}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 12L19 12M14 18L19.2929 12.7071C19.6262 12.3738 19.7929 12.2071 19.7929 12C19.7929 11.7929 19.6262 11.6262 19.2929 11.2929L14 6"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-              <div
-                id={`collapse-${item.name}`}
-                className={`accordion-content w-full px-0 overflow-hidden transition-all duration-500 ${openAccordion === item.name ? 'max-h-96' : 'max-h-0'}`}
-                aria-labelledby={`heading-${item.name}`}
-              >
-                <div className="text-gray-900 my-4 leading-6">
-                  <ul className="list-none space-y-2">
-                    {item.models.map((model, index) => (
-                      <li className='montserrat my-3' key={index}>{model}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      ))}
+                          {section.items.map((item) => (
+                            <li key={item.name} className="flow-root">
+                              <div className="accordion-group" data-accordion="default-accordion">
+                                <div
+                                  className="group accordion px-1 transition-all duration-500 accordion-active:bg-indigo-50"
+                                  id={`heading-${item.name}`}
+                                >
+                                  <button
+                                    onClick={() => toggleAccordion(item.name)}
+                                    className="accordion-toggle group inline-flex items-center justify-between text-left leading-8 text-gray-900 w-full transition duration-500 group-hover:text-indigo-600 accordion-active:text-indigo-600"
+                                    aria-controls={`collapse-${item.name}`}
+                                  >
+                                    <h3 className='montserrat'>{item.name}</h3>
+                                    <svg
+                                      className={`text-gray-400 transition duration-500 w-6 h-6 group-hover:text-indigo-600 accordion-active:text-indigo-600 ${openAccordion === item.name ? 'rotate-90' : ''}`}
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M3 12L19 12M14 18L19.2929 12.7071C19.6262 12.3738 19.7929 12.2071 19.7929 12C19.7929 11.7929 19.6262 11.6262 19.2929 11.2929L14 6"
+                                        stroke="currentColor"
+                                        strokeWidth="1.6"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                      />
+                                    </svg>
+                                  </button>
+                                  <div
+                                    id={`collapse-${item.name}`}
+                                    className={`accordion-content w-full px-0 overflow-hidden transition-all duration-500 ${openAccordion === item.name ? 'max-h-96' : 'max-h-0'}`}
+                                    aria-labelledby={`heading-${item.name}`}
+                                  >
+                                    <div className="text-gray-900 my-4 leading-6">
+                                      <ul className="list-none space-y-2">
+                                        {item.models.map((model) => (
+                                          <li className='montserrat my-3' key={model.name}>
+                                            <Link to={model.href} className="hover:text-indigo-600">{model.name}</Link>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                          ))}
                         </ul>
                       </div>
-                    ))}
+                    ))} 
                   </TabPanel>
                 ))}
               </TabPanels>
@@ -260,24 +200,16 @@ export default function Navbar() {
             <div className="space-y-6 border-t border-gray-200 px-4 py-6">
               {navigation.pages.map((page) => (
                 <div key={page.name} className="flow-root">
-                  <a href={page.href} className="-m-2 block p-2 montserrat text-gray-900">
+                  <Link to={page.href} className="-m-2 block p-2 montserrat text-gray-900">
                     {page.name}
-                  </a>
+                  </Link>
                 </div>
               ))}
-            </div>
-
-          
-            <div className="border-t border-gray-200 px-4 py-6">
-              <p className='climate-crisis uppercase text-xs mb-4'> Seguinos!</p>
-              <a href="https://www.instagram.com/grav.sneakers/" target='_blank' className="-m-2 flex items-center p-2">
-                <img
-                  alt=""
-                  src={instagram}
-                  className="block h-auto w-7 flex-shrink-0"
-                />
-                
-              </a>
+              <div className="flow-root">
+                <Link to="/cart" className="-m-2 block p-2 montserrat text-gray-900">
+                  Carrito
+                </Link>
+              </div>
             </div>
           </DialogPanel>
         </div>

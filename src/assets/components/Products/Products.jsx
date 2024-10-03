@@ -20,7 +20,7 @@ const Products = ({ filteredProducts }) => {
   };
 
   return (
-    <div className="mx-6 sm:px-6 lg:px-8 max-w-7xl">
+    <div className="mx-6 sm:px-6 sm:mx-auto sm:px-26 lg:px-8 max-w-7xl">
       <div className="grid grid-cols-2 gap-6 mt-10 lg:mt-16 lg:gap-4 lg:grid-cols-4">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
