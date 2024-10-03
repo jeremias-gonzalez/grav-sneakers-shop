@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect, lazy, Suspense } from 'react';
 import { DataContext } from '../Context/DataContext';
 import carticon from '../../../imgs/shopping-cart.png'; // Asegúrate de tener la ruta correcta para el ícono
-import Skeleton from '../ui/Skeleton'; // Asegúrate de que la importación sea correcta
+import Loader from '../ui/loader'; // Importa tu componente Loader
 
 // Lazy load del componente CartContent
 const CartContent = lazy(() => import('../CartContent/CartContent')); // Cambia la ruta según tu estructura de carpetas
@@ -10,6 +10,7 @@ const Cart = () => {
   const { cart } = useContext(DataContext);
   const [active, setActive] = useState(false);
   const [totalItems, setTotalItems] = useState(0);
+  const [loading, setLoading] = useState(true); // Estado para controlar el loading
 
   useEffect(() => {
     const calculateTotalItems = () => {
@@ -19,6 +20,18 @@ const Cart = () => {
 
     calculateTotalItems();
   }, [cart]);
+
+  useEffect(() => {
+    // Simula un delay de 2 segundos para mostrar el loader
+    if (active) {
+      setLoading(true);
+      const timer = setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+
+      return () => clearTimeout(timer); // Limpia el timeout si el componente se desmonta
+    }
+  }, [active, cart]);
 
   return (
     <header>
@@ -44,7 +57,7 @@ const Cart = () => {
           )}
         </div>
 
-        {/* Slide-over con CartContent o Skeleton */}
+        {/* Slide-over con CartContent o Loader */}
         <div
           className={`fixed inset-0 overflow-hidden z-10 transition-transform duration-500 ${
             active ? 'translate-x-0' : 'translate-x-full'
@@ -57,7 +70,7 @@ const Cart = () => {
                 <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                   <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                     <div className="flex items-start justify-between mb-7">
-                      <h2 className="text-lg font-medium text-gray-900 mx-auto">Mi carrito</h2>
+                      <h2 className="text-lg Montserrat text-gray-900 mx-auto">Mi carrito</h2>
                       <div className="ml-3 flex h-7 items-center">
                         <button
                           type="button"
@@ -79,11 +92,13 @@ const Cart = () => {
                       </div>
                     </div>
 
-                    {/* Cargando el contenido del carrito o mostrando el Skeleton */}
-                    {cart.length === 0 ? (
-                      <Skeleton /> // Muestra el Skeleton si el carrito está vacío
+                    {/* Cargando el contenido del carrito o mostrando el Loader */}
+                    {loading ? (
+                      <div className='flex justify-center'>
+                      <Loader />
+                      </div> // Muestra el Loader mientras se carga
                     ) : (
-                      <Suspense fallback={<Skeleton />}>
+                      <Suspense fallback={<div className='flex justify-center'> <Loader /> </div>}>
                         <CartContent />
                       </Suspense>
                     )}
@@ -99,6 +114,7 @@ const Cart = () => {
 };
 
 export default Cart;
+
 
    {/* {Array.isArray(allProducts) && allProducts.length ? ( // Verifica si es un array y tiene elementos
                         <>

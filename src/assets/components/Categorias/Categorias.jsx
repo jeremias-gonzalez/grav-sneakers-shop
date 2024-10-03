@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense} from "react";
 import { FaSearch, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import data from "../../../../public/data.json";
 import Products from "../Products/Products";
+import Skeleton from "../Skeleton/Skeleton";
 import { Link } from "react-router-dom";
 const Categorias = () => {
   const [products, setProducts] = useState([]);
@@ -11,6 +12,8 @@ const Categorias = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("popularity");
+  const [isLoading, setIsLoading] = useState(true); // Estado para manejar la carga
+
   const [filters, setFilters] = useState({
     brand: "",
     priceRange: "",
@@ -101,6 +104,15 @@ const Categorias = () => {
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false); // Cambia el estado a false después de 3 segundos
+    }, 2000);
+
+    // Limpiar el timer si el componente se desmonta
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
@@ -201,7 +213,16 @@ const Categorias = () => {
   {/* Right Sidebar: Products */}
   <div className="md:w-3/4">
     {/* Displaying Products */}
-    <Products filteredProducts={currentProducts} />
+    
+    <Suspense fallback={<Skeleton />}>
+            {!isLoading ? (
+              <div className='animate__fadeInUp'>
+              <Products filteredProducts={currentProducts} />
+              </div>
+            ) : (
+              <Skeleton />
+            )}
+          </Suspense>
 
     {/* Pagination */}
     <div className="flex justify-center mt-8">
