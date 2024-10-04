@@ -15,7 +15,8 @@ export default {
         'custom-blue': '#5a9a77', // Agrega tu nuevo color aquí
       },
       fontFamily: {
-        kelsi: ['kelsi', 'sans-serif'],
+        kelsi: ['Kelsi', 'sans-serif'],
+        kelsi2:['kelsi2','sanserif']
       },
     },
   },
