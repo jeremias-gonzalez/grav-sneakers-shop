@@ -13,7 +13,7 @@ const CartContent = () => {
         const total = cart.reduce((acc, product) => acc + product.price * product.quantity, 0);
         
         cart.forEach((product) => {
-            message += `- ${product.brand} ${product.model}, Precio: $${product.price}, Color: ${product.color.name}, Talle: ${product.size.name}, Cantidad: ${product.quantity}\n`;
+            message += `- ${product.brand} ${product.model}, Precio: $${product.price}, Talle: ${product.size.name}, Cantidad: ${product.quantity}\n`;
         });
       
         // Agregar el total o el total con descuento al mensaje

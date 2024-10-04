@@ -52,7 +52,7 @@ const ProductDialog = ({ product, open, closeDialog }) => {
   };
 
   const handleAddToCart = () => {
-    if (!selectedColor || !selectedSize) {
+    if (!selectedSize) {
       setAlertMessage('Por favor, selecciona un color y un talle antes de agregar al carrito.');
       setShowAlert(true); // Muestra la alerta si falta información
       setTimeout(() => {

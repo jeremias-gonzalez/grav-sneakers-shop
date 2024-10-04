@@ -73,7 +73,7 @@ const CartElements = () => {
       ) : (
         <>
           {cart.map((product) => (
-            <div className='flex items-center justify-between mb-4' key={`${product.id}-${product.color.name}-${product.size.name}`}>
+            <div className='flex items-center justify-between mb-4' key={`${product.id}-${product.size.name}`}>
               <img className='w-16' src={product.image} alt={product.model} />
               <div className="flex flex-col">
                 <div className='flex'>
@@ -81,7 +81,7 @@ const CartElements = () => {
                   <p className='montserrat text-xs'>{product.model}</p>
                 </div>
                 <div className='flex'>
-                  <p className='montserrat text-xs mx-1'>Color: {typeof product.color === 'object' ? product.color.name : product.color}</p>
+                  {/* <p className='montserrat text-xs mx-1'>Color: {typeof product.color === 'object' ? product.color.name : product.color}</p> */}
                   <h4 className='montserrat text-xs'>Talle: {typeof product.size === 'object' ? product.size.name : product.size}</h4>
                 </div>
                 <div className="flex border w-20 rounded-xl items-center space-x-5">
@@ -102,7 +102,7 @@ const CartElements = () => {
               </div>
               <div>
                 <button
-                  onClick={() => removeProduct(product.id, product.color.name, product.size.name)}
+                  onClick={() => removeProduct(product.id, product.size.name)}
                   className='p-2 rounded'
                 >
                   <img src={trashicon} className='w-5' alt="" />
