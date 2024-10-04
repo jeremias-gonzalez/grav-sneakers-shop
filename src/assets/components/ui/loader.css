@@ -2,7 +2,7 @@
 .loader {
   display: block;
   --height-of-loader: 4px;
-  --loader-color: #4e60f5;
+  --loader-color: #5a9a77;
   width: 130px;
   height: var(--height-of-loader);
   border-radius: 30px;

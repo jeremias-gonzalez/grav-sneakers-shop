@@ -25,3 +25,10 @@
     font-style: normal;
   }
   
+ .kelsi{
+    font-family: 'kelsi';
+    src: url('/fonts/Kelsi-fill.otf') format('otf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  

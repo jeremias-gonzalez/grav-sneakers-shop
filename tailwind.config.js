@@ -12,7 +12,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        'custom-blue': '#4e60f5', // Agrega tu nuevo color aquí
+        'custom-blue': '#5a9a77', // Agrega tu nuevo color aquí
+      },
+      fontFamily: {
+        kelsi: ['kelsi', 'sans-serif'],
       },
     },
   },

@@ -65,7 +65,7 @@ const Home = () => {
               </svg>
             </div>
             <h3 className="text-md montserrat text-gray-900">PAGÁ COMO QUIERAS</h3>
-            <p className="text-gray-600 montserrat text-xs">Tarjetas de crédito , efectivo o transferencia</p>
+            <p className="text-gray-600 montserrat text-xs">Tarjetas de débito , efectivo o transferencia</p>
           </div>
         </div>
 
