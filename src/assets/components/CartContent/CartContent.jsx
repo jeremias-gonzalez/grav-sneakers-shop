@@ -35,7 +35,7 @@ const CartContent = () => {
            
         </div>
     ) : (
-        <h2 className='climate-crisis text-center my-[30rem] md:my-[19rem] md:text-lg'>Tu carrito está vacío!</h2>
+        <h2 className='font-kelsi2 text-4xl text-center my-[25rem] md:my-[19rem] md:text-4xl'>Tu carrito esta vacio!</h2>
     );
 };
 

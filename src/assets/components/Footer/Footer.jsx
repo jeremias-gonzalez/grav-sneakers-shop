@@ -10,13 +10,17 @@ const Footer = () => {
                 <a href="#" className="flex justify-center ">
                  <img className='w-20' src={logo} alt="" />
                 </a>
+                <div className='md:flex md:flex-col'>
+                  
                     <ul className="text-lg flex md:flex-col items-center justify-center flex-col gap-7 md:flex-row md:gap-12 transition-all duration-500 py-16 mb-10 border-b border-gray-200">
-                        <li><a href="#" className="text-gray-800 climate-crisis uppercase hover:text-gray-900">Inicio</a></li>
-                        <li><Link to="/categories" className=" text-gray-800 climate-crisis uppercase hover:text-gray-900">Products</Link></li>
-                        <li><a href="https://wa.link/tygjb8" target='_blank' className=" text-gray-800 climate-crisis uppercase hover:text-gray-900">Contactanos</a></li>
+                        <div className='md:flex md:justify-center'>
+                        <li><a href="#" className="text-gray-800 md:mx-5 font-kelsi md:text-5xl uppercase hover:text-gray-900">Inicio</a></li>
+                        <li><Link to="/categories" className=" text-gray-800 font-kelsi mx-5  md:text-5xl uppercase hover:text-gray-900">Products</Link></li>
+                        <li><a href="https://wa.link/tygjb8" target='_blank' className=" text-gray-800 md:mx-5 font-kelsi md:text-5xl uppercase hover:text-gray-900">Contactanos</a></li>
+                        </div>
                         {/* <li><a href="#" className=" text-gray-800 climate-crisis uppercase hover:text-gray-900">Blogs</a></li>
                         <li><a href="#" className=" text-gray-800 climate-crisis uppercase hover:text-gray-900">Support</a></li> */}
-                  <div className='md:flex'>
+                  <div className='md:flex '>
                    <div className='flex flex-col justify-center my-10'>
                       <h1 className='text-center montserrat my-1'>Metodos de pago</h1>
                       <div className='flex my-2'>
@@ -44,7 +48,7 @@ const Footer = () => {
                     </div>
                     </div>
                     </ul>
-                    
+                    </div>
                     <div className="flex space-x-10 justify-center items-center mb-14">
                         {/* <a href="#" className="block  text-gray-900 transition-all duration-500 hover:text-indigo-600 ">
                           <svg className="w-[1.688rem] h-[1.688rem]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">

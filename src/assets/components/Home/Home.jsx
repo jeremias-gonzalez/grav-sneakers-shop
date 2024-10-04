@@ -70,7 +70,7 @@ const Home = () => {
         </div>
 
         <div className='text-center mt-10'>
-          <h1 className='font-kelsi text-3xl uppercase'>Bienvenidos a <span className='text-custom-blue'>Grav</span></h1>
+          <h1 className='font-kelsi text-3xl uppercase'>Bienvenidos a <span className='text-custom-blue font-kelsi2'>Grav</span></h1>
           <p className='mt-3 text-md montserrat mx-20 text-gray-400'>Te invitamos a explorar todo lo mejor que tenemos para vos!</p>
           <Link to="/categories">
           <div className='flex my-10 justify-center  '>
