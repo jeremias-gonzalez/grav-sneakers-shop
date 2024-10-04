@@ -102,12 +102,14 @@
  
     ],
     "sizes": [
-      { "name": "35", "inStock": true },
-      { "name": "36", "inStock": true },
-      { "name": "37", "inStock": true },
-      { "name": "38", "inStock": true },
-      { "name": "39", "inStock": true },
-      { "name": "40", "inStock": true }
+      { "name": "35", "inStock": false },
+      { "name": "36", "inStock": false },
+      { "name": "37", "inStock": false },
+      { "name": "38", "inStock": false },
+      { "name": "39", "inStock": false },
+      { "name": "40", "inStock": false },
+      { "name": "41", "inStock": true },
+      { "name": "42", "inStock": true }
     ],
     "price": 75000,
     "image": "/imgs/knu-blues.png",
@@ -261,6 +263,7 @@
       
     ],
     "sizes": [
+      { "name": "34", "inStock": true },
       { "name": "35", "inStock": true },
       { "name": "36", "inStock": true },
       { "name": "37", "inStock": true },
@@ -288,15 +291,17 @@
       
      
     ],
-    "sizes": [
+    "sizes": [ 
+      { "name": "34", "inStock": true },
       { "name": "35", "inStock": true },
       { "name": "36", "inStock": true },
       { "name": "37", "inStock": true },
+      { "name": "38", "inStock": true },
       { "name": "39", "inStock": true },
       { "name": "40", "inStock": true },
       { "name": "41", "inStock": true },
-      { "name": "42", "inStock": true },
-      { "name": "43", "inStock": false }
+      { "name": "42", "inStock": true }
+      
     ],
     "price": 65000,
     "image": "/imgs/campus-blues.png",
@@ -310,19 +315,19 @@
   {
     "id": 13,
     "brand": "Nike",
-    "model": "Zoom MX",
+    "model": "Air Zoom",
     "colors": [
      
     ],
     "sizes": [
+      { "name": "34", "inStock": true },
       { "name": "35", "inStock": true },
       { "name": "36", "inStock": true },
       { "name": "37", "inStock": true },
+      { "name": "38", "inStock": true },
       { "name": "39", "inStock": true },
-      { "name": "40", "inStock": true },
-      { "name": "41", "inStock": true },
-      { "name": "42", "inStock": true },
-      { "name": "43", "inStock": false }
+      { "name": "40", "inStock": false },
+      { "name": "41", "inStock": false }
     ],
     "price": 70000,
     "image": "/imgs/air-zoom-mx-black.png",
@@ -342,13 +347,14 @@
       
     ],
     "sizes": [
+      { "name": "34", "inStock": true },
       { "name": "35", "inStock": true },
       { "name": "36", "inStock": true },
-      { "name": "37", "inStock": true },
-      { "name": "39", "inStock": true },
-      { "name": "40", "inStock": true },
-      { "name": "41", "inStock": true },
-      { "name": "42", "inStock": true },
+      { "name": "37", "inStock": false },
+      { "name": "39", "inStock": false },
+      { "name": "40", "inStock": false },
+      { "name": "41", "inStock": false },
+      { "name": "42", "inStock": false },
       { "name": "43", "inStock": false }
     ],
     "price": 70000,
@@ -371,11 +377,14 @@
    
     ],
     "sizes": [
-      { "name": "36", "inStock": true },
-      { "name": "37", "inStock": true },
+      { "name": "36", "inStock": false},
+      { "name": "37", "inStock": false },
       { "name": "38", "inStock": true },
       { "name": "39", "inStock": true },
-      { "name": "40", "inStock": true }
+      { "name": "40", "inStock": true },
+      { "name": "41", "inStock": true },
+      { "name": "42", "inStock": true},
+      { "name": "43", "inStock": true}
     ],
     "price": 65000,
     "image": "/imgs/puma-suede-xl-blues.png",
@@ -383,7 +392,8 @@
       "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/374504/02/mod01/fnd/IND/fmt/png",
       "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/374504/01/mod01/fnd/IND/fmt/png"
     ],
-    "quantity": 1
+    "quantity": 1,
+    "stock": false
   },
   
   {
