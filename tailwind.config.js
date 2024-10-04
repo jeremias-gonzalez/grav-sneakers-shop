@@ -12,7 +12,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'custom-blue': '#5a9a77', // Agrega tu nuevo color aquí
+        'custom-blue': '#5a9a77',
+        beige: '#f5f5dc',  // Agrega tu nuevo color aquí
       },
       fontFamily: {
         kelsi: ['Kelsi', 'sans-serif'],

@@ -147,7 +147,7 @@ const Categorias = () => {
             </li>
           </ol>
         </nav>
-        <h1 className="text-2xl climate-crisis text-center md:ml-[20rem] mb-8 md:mb-[3rem]">Todos los productos</h1>
+        <h1 className="text-3xl text-custom-blue font-kelsi2 text-center md:ml-[20rem] mb-8 md:mb-[3rem]">Todos los productos</h1>
 
         <div className="flex flex-col md:flex-row">
           {/* Left Sidebar: Filters and Search */}
@@ -232,17 +232,7 @@ const Categorias = () => {
             </Suspense>
 
             {/* Load More Button */}
-            {displayedProducts < filteredProducts.length && (
-              <div className="flex justify-center mt-8">
-                <button
-                  className="px-4 py-2 bg-custom-blue text-white rounded-lg"
-                  onClick={loadMoreProducts}
-                >
-                  Ver más
-                </button>
-              </div>
-            )}
-
+        
             {/* Pagination */}
             <div className="flex justify-center mt-8">
               {Array.from({ length: Math.ceil(filteredProducts.length / productsPerPage) }, (_, index) => (

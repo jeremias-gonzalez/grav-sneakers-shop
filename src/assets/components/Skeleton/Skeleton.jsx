@@ -2,7 +2,7 @@ import React from 'react';
 
 const Skeleton = () => {
   return (
-    <div className="grid grid-cols-2 gap-6 mt-10 lg:mt-16 lg:gap-4 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-6 mt-10 lg:mt-16 lg:gap-4 lg:grid-cols-4">
       {Array.from({ length: 4 }).map((_, index) => (
         <div key={index} className="relative group bg-white p-4 transition-all">
           <div className="overflow-hidden rounded-md bg-gray-200 animate-pulse h-48 w-full"></div>

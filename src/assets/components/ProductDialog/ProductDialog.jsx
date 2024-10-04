@@ -101,7 +101,7 @@ const ProductDialog = ({ product, open, closeDialog }) => {
                       </Radio>
                     ))
                   ) : (
-                    <p>No hay colores disponibles</p>
+                    <p>Modelo color de la imagen</p>
                   )}
                 </RadioGroup>
               </fieldset>
