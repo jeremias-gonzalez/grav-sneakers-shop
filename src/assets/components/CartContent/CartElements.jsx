@@ -25,9 +25,9 @@ const CartElements = () => {
   };
 
   // Función para actualizar la cantidad de un producto
-  const updateQuantity = (productId, productColor, productSize, action) => {
+  const updateQuantity = (productId, productSize, action) => {
     const updatedCart = cart.map((item) => {
-      if (item.id === productId && item.color.name === productColor && item.size.name === productSize) {
+      if (item.id === productId && item.size.name === productSize) {
         let newQuantity = item.quantity;
         if (action === 'increment') {
           newQuantity += 1;
@@ -52,7 +52,7 @@ const CartElements = () => {
     let message = 'Aquí están los productos en mi carrito:\n';
 
     cart.forEach((product) => {
-      message += `- ${product.brand} ${product.model}, Precio: $${product.price}, Color: ${product.color.name}, Talle: ${product.size.name}, Cantidad: ${product.quantity}\n`;
+      message += `- ${product.brand} ${product.model}, Precio: $${product.price}, Talle: ${product.size.name}, Cantidad: ${product.quantity}\n`;
     });
 
     message += `\nTotal de la compra: $${total.toFixed(2)}`;
