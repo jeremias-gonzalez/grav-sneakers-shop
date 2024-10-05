@@ -17,9 +17,9 @@ const CartElements = () => {
   }, [cart]);
 
   // Función para eliminar un producto del carrito
-  const removeProduct = (productId, productColor, productSize) => {
+  const removeProduct = (productId, productSize) => {
     const updatedCart = cart.filter(
-      item => !(item.id === productId && item.color.name === productColor && item.size.name === productSize)
+      item => !(item.id === productId && item.size.name === productSize)
     );
     setCart(updatedCart);
   };
@@ -52,10 +52,10 @@ const CartElements = () => {
     let message = 'Hola!,quiero realizar el pedido de los siguentes productos:\n';
 
     cart.forEach((product) => {
-      message += `- ${product.brand} ${product.model}, Precio: $${product.price}, Talle: ${product.size.name}, Cantidad: ${product.quantity}\n`;
+      message += `- ${product.brand} ${product.model}, Precio por unidad: $${product.price.toLocaleString()}, Talle: ${product.size.name}, Cantidad: ${product.quantity}\n`;
     });
 
-    message += `\nTotal de la compra: $${total.toFixed(2)}`;
+    message += `\nTotal de la compra: $${total.toLocaleString()}`;
 
     const encodedMessage = encodeURIComponent(message);
     return `${baseUrl}&text=${encodedMessage}`;
@@ -102,7 +102,7 @@ const CartElements = () => {
               </div>
               <div>
                 <button
-                  onClick={() => removeProduct(product.id, product.size.name)}
+                  onClick={() => removeProduct(product.id,product.size.name)}
                   className='p-2 rounded'
                 >
                   <img src={trashicon} className='w-5' alt="" />

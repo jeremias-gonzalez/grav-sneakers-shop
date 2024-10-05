@@ -196,9 +196,9 @@ const Categorias = () => {
                 onChange={handleFilterChange}
               >
                 <option value="">Precios</option>
-                <option value="0-100">$0 - $100</option>
-                <option value="101-150">$101 - $150</option>
-                <option value="151-200">$151 - $200</option>
+                <option value="0-65000">$0 - $65.000</option>
+                <option value="0-70000">$0 - $70.000</option>
+                <option value="0-8000">$0 - $80.000</option>
               </select>
 
               <select
@@ -215,6 +215,8 @@ const Categorias = () => {
                 <option value="39">39</option>
                 <option value="40">40</option>
                 <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
               </select>
             </div>
           </div>
