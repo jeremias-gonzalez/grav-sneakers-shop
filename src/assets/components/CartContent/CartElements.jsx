@@ -86,14 +86,14 @@ const CartElements = () => {
                 </div>
                 <div className="flex border w-20 rounded-xl items-center space-x-5">
                   <button
-                    onClick={() => updateQuantity(product.id, product.color.name, product.size.name, 'decrement')}
+                    onClick={() => updateQuantity(product.id, product.size.name, 'decrement')}
                     className="text-gray-800 p-1 rounded hover:bg-gray-400"
                   >
                     -
                   </button>
                   <p className='montserrat'>{product.quantity}</p>
                   <button
-                    onClick={() => updateQuantity(product.id, product.color.name, product.size.name, 'increment')}
+                    onClick={() => updateQuantity(product.id,  product.size.name, 'increment')}
                     className="text-gray-800 rounded hover:bg-gray-400"
                   >
                     +
@@ -116,7 +116,7 @@ const CartElements = () => {
           <div className='mt-50 z-100'>
             <div className="border-t flex justify-between text-base font-medium text-gray-900">
               <p className='montserrat'>Subtotal</p>
-              <p className='montserrat'>${total.toFixed(2)}</p> {/* Mostrar total sin descuento */}
+              <p className='montserrat'>${total.toLocaleString()}</p> {/* Mostrar total sin descuento */}
             </div>
 
             <button

@@ -8,11 +8,11 @@
    
     ],
     "sizes": [
-      { "name": "35", "inStock": true },
-      { "name": "36", "inStock": true },
-      { "name": "37", "inStock": true },
-      { "name": "38", "inStock": true },
-      { "name": "39", "inStock": true },
+      { "name": "35", "inStock":  false },
+      { "name": "36", "inStock":  false },
+      { "name": "37", "inStock":  false },
+      { "name": "38", "inStock":  false},
+      { "name": "39", "inStock": false },
       { "name": "40", "inStock": true }
     ],
     "price": 70000,
@@ -79,12 +79,14 @@
  
     ],
     "sizes": [
-      { "name": "35", "inStock": true },
-      { "name": "36", "inStock": true },
-      { "name": "37", "inStock": true },
+      { "name": "35", "inStock": false },
+      { "name": "36", "inStock": false },
+      { "name": "37", "inStock": false },
       { "name": "38", "inStock": true },
       { "name": "39", "inStock": true },
-      { "name": "40", "inStock": true }
+      { "name": "40", "inStock": true },
+      { "name": "41", "inStock": true },
+      { "name": "42", "inStock": true }
     ],
     "price": 70000,
     "image": "/imgs/knu-white.png",
@@ -129,9 +131,11 @@
      
     ],
     "sizes": [
-      { "name": "35", "inStock": true },
-      { "name": "36", "inStock": true },
-      { "name": "37", "inStock": true },
+      
+      { "name": "34", "inStock": true },
+      { "name": "35", "inStock": false },
+      { "name": "36", "inStock": false },
+      { "name": "37", "inStock": false },
       { "name": "39", "inStock": true },
       { "name": "40", "inStock": true },
       { "name": "41", "inStock": true },
@@ -158,8 +162,8 @@
     "sizes": [
       { "name": "35", "inStock": true },
       { "name": "36", "inStock": true },
-      { "name": "37", "inStock": true },
-      { "name": "39", "inStock": true },
+      { "name": "37", "inStock": false },
+      { "name": "39", "inStock": false },
       { "name": "40", "inStock": true },
       { "name": "41", "inStock": true },
       { "name": "42", "inStock": true },
@@ -183,11 +187,13 @@
      
     ],
     "sizes": [
+      { "name": "34", "inStock": true },
       { "name": "35", "inStock": true },
       { "name": "36", "inStock": true },
       { "name": "37", "inStock": true },
-      { "name": "39", "inStock": true },
-      { "name": "40", "inStock": true },
+      { "name": "38", "inStock": true },
+      { "name": "39", "inStock": false },
+      { "name": "40", "inStock": false },
       { "name": "41", "inStock": true },
       { "name": "42", "inStock": true },
       { "name": "43", "inStock": false }
@@ -210,14 +216,14 @@
     
     ],
     "sizes": [
-      { "name": "35", "inStock": true },
-      { "name": "36", "inStock": true },
-      { "name": "37", "inStock": true },
+      { "name": "35", "inStock": false},
+      { "name": "36", "inStock": false},
+      { "name": "37", "inStock": false },
+      { "name": "38", "inStock": true },
       { "name": "39", "inStock": true },
       { "name": "40", "inStock": true },
       { "name": "41", "inStock": true },
-      { "name": "42", "inStock": true },
-      { "name": "43", "inStock": false }
+      { "name": "42", "inStock": false }
     ],
     "price": 70000,
     "image": "/imgs/low-travis-green.png",
@@ -236,14 +242,14 @@
     
     ],
     "sizes": [
-      { "name": "35", "inStock": true },
-      { "name": "36", "inStock": true },
-      { "name": "37", "inStock": true },
+      { "name": "35", "inStock": false },
+      { "name": "36", "inStock": false},
+      { "name": "37", "inStock": false },
       { "name": "39", "inStock": true },
       { "name": "40", "inStock": true },
       { "name": "41", "inStock": true },
       { "name": "42", "inStock": true },
-      { "name": "43", "inStock": false }
+      { "name": "43", "inStock": true }
     ],
     "price": 70000,
     "image": "/imgs/low-travis-white.png",
@@ -267,6 +273,7 @@
       { "name": "35", "inStock": true },
       { "name": "36", "inStock": true },
       { "name": "37", "inStock": true },
+      { "name": "38", "inStock": true },
       { "name": "39", "inStock": true },
       { "name": "40", "inStock": true },
       { "name": "41", "inStock": true },
@@ -292,15 +299,15 @@
      
     ],
     "sizes": [ 
-      { "name": "34", "inStock": true },
+      { "name": "34", "inStock": false},
       { "name": "35", "inStock": true },
-      { "name": "36", "inStock": true },
-      { "name": "37", "inStock": true },
-      { "name": "38", "inStock": true },
-      { "name": "39", "inStock": true },
-      { "name": "40", "inStock": true },
+      { "name": "36", "inStock": false },
+      { "name": "37", "inStock": false},
+      { "name": "38", "inStock": false },
+      { "name": "39", "inStock": false },
+      { "name": "40", "inStock": true},
       { "name": "41", "inStock": true },
-      { "name": "42", "inStock": true }
+      { "name": "42", "inStock": false }
       
     ],
     "price": 65000,
@@ -321,11 +328,11 @@
     ],
     "sizes": [
       { "name": "34", "inStock": true },
-      { "name": "35", "inStock": true },
+      { "name": "35", "inStock": false },
       { "name": "36", "inStock": true },
       { "name": "37", "inStock": true },
-      { "name": "38", "inStock": true },
-      { "name": "39", "inStock": true },
+      { "name": "38", "inStock": false },
+      { "name": "39", "inStock": false },
       { "name": "40", "inStock": false },
       { "name": "41", "inStock": false }
     ],
@@ -404,11 +411,12 @@
      
     ],
     "sizes": [
-      { "name": "36", "inStock": true },
-      { "name": "37", "inStock": true },
-      { "name": "38", "inStock": true },
+      { "name": "36", "inStock": false },
+      { "name": "37", "inStock": false},
+      { "name": "38", "inStock": false },
       { "name": "39", "inStock": true },
-      { "name": "40", "inStock": true }
+      { "name": "40", "inStock": true },
+      { "name": "41", "inStock": true }
     ],
     "price": 65000,
     "image": "/imgs/puma-suede-xl.png",
@@ -456,11 +464,11 @@
       
     ],
     "sizes": [
+      { "name": "34", "inStock": true },
+      { "name": "35", "inStock": true },
       { "name": "37", "inStock": true },
-      { "name": "38", "inStock": true },
-      { "name": "39", "inStock": true },
-      { "name": "40", "inStock": true },
-      { "name": "41", "inStock": true }
+      { "name": "36", "inStock": true },
+      { "name": "38", "inStock": true }
     ],
     "price": 60000,
     "image": "/imgs/new-balance-rosa-viejo.png",
@@ -478,12 +486,12 @@
 
     ],
     "sizes": [
+      { "name": "34", "inStock": true },
+      { "name": "35", "inStock": true },
       { "name": "36", "inStock": true },
       { "name": "37", "inStock": true },
       { "name": "38", "inStock": true },
-      { "name": "39", "inStock": true },
-      { "name": "40", "inStock": true },
-      { "name": "45", "inStock": true }
+      { "name": "39", "inStock": false }
     ],
     "price": 60000,
     "image": "/imgs/new-balance-550-white.png",

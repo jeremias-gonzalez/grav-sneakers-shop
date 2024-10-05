@@ -39,7 +39,7 @@ const Products = ({ filteredProducts }) => {
                 </h3>
                 <p className="text-2xl md:text-lg montserrat text-gray-500 ml-[.5rem] ">{product.model}</p>
                 </div>
-                <p className="text-2xl md:text-lg montserrat2 text-gray-900 mt-2 md:mt-2">${product.price}</p>
+                <p className="text-2xl md:text-lg montserrat2 text-gray-900 mt-2 md:mt-2">${product.price.toLocaleString()}</p>
                 <div className='my-5 md:my-2'>
                   <span className='montserrat mx-auto text-custom-blue text-lg md:text-sm'>Abonando solo en Efectivo o Transferencia</span>
                 </div>
