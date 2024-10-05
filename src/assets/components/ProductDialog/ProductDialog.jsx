@@ -4,6 +4,9 @@ import { Dialog, DialogBackdrop, DialogPanel, Radio, RadioGroup } from '@headles
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { DataContext } from '../Context/DataContext';
 import classNames from 'classnames';
+import talles from "/public/imgs/ARG.png"
+
+
 import { motion } from 'framer-motion'; // Importa Framer Motion
 const ProductDialog = ({ product, open, closeDialog }) => {
   const { cart, setCart } = useContext(DataContext);
@@ -158,7 +161,7 @@ const ProductDialog = ({ product, open, closeDialog }) => {
             </button>
 
             {/* Imagen dentro del modal */}
-            <img src="/public/imgs/ARG.png" alt="Guía de talles" className="w-[64vw] md:w-64 rounded-xl h-auto" />
+            <img src={talles} alt="Guía de talles" className="w-[64vw] md:w-64 rounded-xl h-auto" />
           </motion.div>
         </div>
       )}
