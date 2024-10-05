@@ -49,7 +49,7 @@ const CartElements = () => {
   // Función para generar el enlace de WhatsApp
   const generateWhatsAppLink = (cart, total) => {
     const baseUrl = 'https://api.whatsapp.com/send?phone=543585181780';
-    let message = 'Aquí están los productos en mi carrito:\n';
+    let message = 'Hola!,quiero realizar el pedido de los siguentes productos:\n';
 
     cart.forEach((product) => {
       message += `- ${product.brand} ${product.model}, Precio: $${product.price}, Talle: ${product.size.name}, Cantidad: ${product.quantity}\n`;
